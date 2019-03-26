@@ -1,6 +1,6 @@
 # original
 
-> A Vue.js project
+> book original
 
 ## Build Setup
 
