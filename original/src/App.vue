@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <login></login>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import login from './components/login' // 引入login.vue组件
+import index from './components/index/index'
 export default {
   name: 'App',
   components: {
-    'login': login 
+    'login': login ,
+    'index':index
   }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+  // @import './common/style/reset.css';
 </style>
