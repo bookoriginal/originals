@@ -7,7 +7,8 @@ import router from './router'
 import iView from 'iview'
 import store from './store'
 import lazyload from 'vue-lazyload'
-import 'iview/dist/styles/iview.css'
+import 'iview/dist/styles/iview.css';
+import './common/style/all.css'
 Vue.use(iView)
 
 Vue.config.productionTip = false
