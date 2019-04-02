@@ -7,6 +7,11 @@
                         <div>
                             作者
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            <ul>
+                                <li>
+
+                                </li>
+                            </ul>
                         </div>
                         <input type="text">
                     </div>
@@ -154,7 +159,7 @@ export default {
                         i{
                             height: 22px;
                             width: 20px;
-                            background: #f66;
+                            // background: #f66;
                         }
                     }
                 }
