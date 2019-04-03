@@ -9,6 +9,7 @@ import store from './store'
 import lazyload from 'vue-lazyload'
 import 'iview/dist/styles/iview.css'
 import './common/style/reset.css';
+import './common/style/animate.css';
 Vue.use(iView)
 
 Vue.config.productionTip = false
