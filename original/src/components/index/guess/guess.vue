@@ -92,17 +92,36 @@ export default {
         .guess-list{
             width: 1200px;
             height: 350px;
-            // background: #fff;
             a{
                 width: 216px;
                 height: 350px;
                 background: #f66;
                 border-radius: 10px;
-                // display: inline-block;
-                // display: block;
                 float: left;
                 margin-right: 30px;
                 color: #333;
+                padding: 10px;
+                .bookimg{
+                    width: 196px;
+                    height: 200px;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .bookname{
+                    line-height: 25px;
+                    padding-left: 15px;
+                }
+                .bookwriter{
+                    line-height: 30px;
+                    padding-left: 15px;
+                }
+                .readbook{
+                    margin-top:15px;
+                    span{
+                        margin:0 10px;
+                    }
+                }
             }
             a:nth-child(5){
                 margin-right: 0;
