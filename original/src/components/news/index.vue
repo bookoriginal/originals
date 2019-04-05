@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       newsDetailShow: false,
-      newsPath: "/" + this.$route.params.path
+      newsPath: "/news"
     };
   },
   mounted() {
@@ -24,6 +24,7 @@ export default {
   },
   methods: {
     isNewsDetailShow() {
+      console.log(this.newsPath);
       switch (this.newsPath) {
         case "/news":
           this.newsDetailShow = false;
@@ -42,7 +43,6 @@ export default {
   watch: {
     $route(to, from) {
       this.newsPath = to.path;
-      console.log(this.newsPath);
       this.isNewsDetailShow();
     }
   }
