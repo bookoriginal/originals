@@ -4,6 +4,7 @@ import Login from '@/components/login'
 Vue.use(Router)
 import Index from '../components/index/index'
 import News from '@/components/news'
+import newsdetail from '@/components/common/newsDetail'
 export default new Router({
   routes: [{
       path: '/index',
@@ -14,6 +15,12 @@ export default new Router({
       path: '/news',
       name: 'news',
       component: News,
+      children: [
+        {
+          path: 'newsdetail',
+          component: newsdetail
+        }
+      ]
     },
     {
       path: '/login',
