@@ -5,8 +5,7 @@ Vue.use(Router)
 import Index from '../components/index/index'
 import News from '@/components/news'
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/index',
       name: 'index',
       component: Index
@@ -14,7 +13,7 @@ export default new Router({
     {
       path: '/news',
       name: 'news',
-      component: News
+      component: News,
     },
     {
       path: '/login',
@@ -22,8 +21,8 @@ export default new Router({
       component: Login
     },
     {
-      path:'/',
-      redirect:'/index' //重定向
+      path: '/',
+      redirect: '/index' //重定向
     }
   ]
 })
