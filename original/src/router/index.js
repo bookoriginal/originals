@@ -7,6 +7,7 @@ import Index from '../components/index/index'
 import News from '@/components/news'
 import Register from '@/components/register'
 import Login from '@/components/login/index'
+import newsdetail from '@/components/common/newsDetail'
 export default new Router({
   routes: [
     {
@@ -17,7 +18,13 @@ export default new Router({
     {
       path: '/news',
       name: 'news',
-      component: News
+      component: News,
+      children: [
+        {
+          path: 'newsdetail',
+          component: newsdetail
+        }
+      ]
     },
     {
       path: '/register',
