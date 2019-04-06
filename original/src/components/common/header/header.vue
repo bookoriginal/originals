@@ -35,11 +35,11 @@
                     </div>
                     <span><i class="fa fa-search" aria-hidden="true"></i>搜索</span>
                 </div>
-                <ul class="header-login">
-                    <li>
+                <ul class="header-login" >
+                    <router-link tag='li' to="/register">
                         <i class="fa fa-gift" aria-hidden="true"></i>
                         <span>注册有礼</span>
-                    </li>
+                    </router-link>
                     <router-link tag='li' to="/login">
                         登录
                     </router-link>

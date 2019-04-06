@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import login from './components/login' // 引入login.vue组件
+import login from './components/login/index' // 引入login.vue组件
 import index from './components/index/index'
 import headers from '@/components/common/header/header';
 import footers from '@/components/common/footer/footer';
