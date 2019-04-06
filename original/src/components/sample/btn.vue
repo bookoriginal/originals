@@ -1,41 +1,39 @@
 <template>
-   <div class="wrapper">
-    
+   <div class="wapper">
        <div class="contain">
-              <div class="nav"></div>
-    
-       
-    <Row class="left">
+           <!-- <headers></headers> -->
+              <!-- <div class="nav"></div> -->
+        <Row class="left">
         <Col span="8">
             <Menu :theme="theme2">
                 <Submenu name="1">
                     <template slot="title">
                         <Icon type="ios-paper" />
-                        内容管理
+                        作品集
                     </template>
 
                     <router-link 
                         teg='div'
-                        to="/wei"
+                        to="/creation/btn/wei"
                         active-class='sel'
                     >
-                    <MenuItem name="1-1">文章管理</MenuItem>
+                    <MenuItem name="1-1">微型小说</MenuItem>
                     </router-link>
 
                      <router-link 
                         teg='div'
-                        to="/shi"
+                        to="/creation/btn/shi"
                         active-class='sel'
                     >
-                    <MenuItem name="1-2">评论管理</MenuItem>
+                    <MenuItem name="1-2">诗歌词赋</MenuItem>
                     </router-link>
 
                     <router-link 
                         teg='div'
-                        to="/sui"
+                        to="/creation/btn/sui"
                         active-class='sel'
                     >
-                    <MenuItem name="1-3">举报管理</MenuItem>
+                    <MenuItem name="1-3">随笔记录</MenuItem>
                      </router-link>
                 </Submenu>
                 <Submenu name="2">
@@ -67,71 +65,57 @@
     <div class="right">
         <router-view></router-view>
     </div>
- 
-    <br>
-    <!-- <p>Change theme</p>
-    <RadioGroup v-model="theme2">
-        <Radio label="light"></Radio>
-        <Radio label="dark"></Radio>
-    </RadioGroup> -->
     </div>
-  
     </div>
 </template>
+
 <script>
+    import headers  from '../index/header/header'
     export default {
         data () {
             return {
                 theme2: 'light'
             }
+        },
+        components: {
+            headers
         }
     }
 </script>
 <style lang="less" scoped>
-.wrapper{
-    // .nav{
-    //     width: 1200px;
-    //     height: 30px;
-    //     background: #f66;
-    // }
-    // .contain{
-    //     width: 1200px;
-    //     overflow: hidden;
-    //     .aa{
-    //         width: 1200px;
-    //         height: 
-    //     }
-    //     .left{
-    //         width:240px;
-            
-    //     }
-    // }
+@import '../../common/style/all.css';
+.wapper{
     width:100%;
-    height: 100%;
+    // height: 100%;
+     position: absolute;
+    //   top: 150px;
+    top: 260px;
+      bottom: 0;
+    overflow: hidden;
         .contain{
             width: 1200px;
             height: 100%;
             margin:auto;
             // overflow: hidden;
             position: absolute;
-            top: 0;
+            top: 0px;
             bottom: 0;
             left: 50%;
             transform: translateX(-600px);
-           .nav{
-                height: 80px;
-                width: 100%;
-                background: red;
-            }
+        //    .nav{
+        //         height: 80px;
+        //         width: 100%;
+        //         background: red;
+        //     }
             .left{
                 // min-height: 600px;
                 // float: left;
                 // div{
                     position: absolute;
                     // overflow: hidden;
-                    top: 80px;
+                    top:0px;
                     bottom: 0;
-                    height: 100%;   
+                    // height: 100%;   
                 // }
                 div{
                     height: 100%;
@@ -145,7 +129,7 @@
                 position: absolute;
                 left: 240px;
                 width: 960px;
-                top:80px;
+                top:0px;
                 bottom: 0;
                 overflow: hidden;
             }

@@ -8,18 +8,18 @@
 
 export default {
 
-  methods: {
-    initPoetry(){
-      this.$axios.get(url)
-      .then(()=>{
+  // methods: {
+  //   initPoetry(){
+  //     this.$axios.get(url)
+  //     .then(()=>{
         
-      })
+  //     })
 
-    }
-  },
-  created() {
-    this.initPoetry()
-  },
+  //   }
+  // },
+  // created() {
+  //   this.initPoetry()
+  // },
 }
 </script>
 
