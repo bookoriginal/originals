@@ -1,5 +1,5 @@
 <template>
-    <div class="wapper">
+    <div class="waapper">
         <headers></headers>
         <Banner></Banner>
         <div class="contain">
@@ -30,7 +30,7 @@
         </div>
         <router-view></router-view>>
         <Footer></Footer>
-        <Up></Up>
+        <!-- <Up></Up> -->
     </div>
 </template>
 
@@ -38,7 +38,7 @@
 import headers  from '../index/header/header'
 import Footer  from '../index/footer/footer'
 import Banner from '../sample/cre_banner'
-import Up from './up.vue'
+// import Up from './up.vue'
 export default {
     data () {
         return {        }    
@@ -47,12 +47,12 @@ export default {
         headers,
         Footer,
         Banner,
-        Up
+        // Up
     }
 }
 </script>
 <style lang="less" scoped>
-.wapper{
+.waapper{
     background: #fff;
     .contain{
         width: 1200px;
