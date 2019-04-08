@@ -1,7 +1,7 @@
 <template>
     <div class="waapper">
-        <headers></headers>
-        <Banner></Banner>
+        <!-- <headers></headers> -->
+        <!-- <Banner></Banner> -->
         <div class="contain">
             <router-link 
                
@@ -29,24 +29,24 @@
             </router-link>
         </div>
         <router-view></router-view>>
-        <Footer></Footer>
+        <!-- <Footer></Footer> -->
         <!-- <Up></Up> -->
     </div>
 </template>
 
 <script>
-import headers  from '../index/header/header'
-import Footer  from '../index/footer/footer'
-import Banner from '../sample/cre_banner'
+// import headers  from '../index/header/header'
+import Footer  from '../common/footer/footer'
+// import Banner from '../sample/cre_banner'
 // import Up from './up.vue'
 export default {
     data () {
         return {        }    
     },
     components: {
-        headers,
+        // headers,
         Footer,
-        Banner,
+        // Banner,
         // Up
     }
 }

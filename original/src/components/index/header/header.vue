@@ -55,7 +55,7 @@ export default {
                 {name:'新闻',path:'/index',icon:''},
                 {name:'读书会',path:'/index',icon:''},
                 {name:'我的书架',path:'/index',icon:'iconeen'},
-                {name:'我的创作',path:'/creation',icon:'iconeen'},
+                {name:'我的创作',path:'/index',icon:'iconeen'},
                 {name:'我的书评',path:'/index',icon:''},
                 {name:'个人中心',path:'/index',icon:''}
             ]
