@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index/index'
-
-
 import Creation from '../components/creation'
 import Btn from '../components/sample/btn'
 import Upwork from '../components/sample/upwork'
@@ -26,61 +24,64 @@ export default new Router({
       path: '/creation',
       name: 'creation',
       component: Creation,
-      children:[
+      children: [
         {
-          path:'btn',
+          path: 'btn',
           name: 'btn',
           component: Btn,
         },
 
         {
-          path:'upwork',
+          path: 'upwork',
           name: 'upwork',
           component: Upwork,
         },
         {
-          path:'creatbook',
+          path: 'creatbook',
           name: 'creatbook',
           component: Creatbook,
         },
         {
-          path:'bianji',
+          path: 'bianji',
           name: 'bianji',
           component: Bianji,
         },
         {
-          path:'bianjiing',
+          path: 'bianjiing',
           name: 'bianjiing',
           component: Bianjiing,
         },
-       
-
-      ]},
-     
-          {
-          path: '/news',
-          name: 'news',
-          component: News,
-          children: [
-            {
-              path: 'newsdetail',
-              component: newsdetail
-            }
-          ]
-        },
-        {
-          path: '/register',
-          name: 'register',
-          component: Register
-        },
-        {
-          path: '/login',
-          name: 'login',
-          component: Login
-        },
+      ]
+    },
     {
-      path:'/',
-      redirect:'/index' //重定向
+      path: '/news',
+      name: 'news',
+      component: News,
+      children: [
+        {
+          path: 'newsdetail',
+          component: newsdetail
+        }
+      ]
+    },
+    {
+      path: '/commentdetail',
+      name: 'commentdetail',
+      component: commentdetail
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/',
+      redirect: '/index' //重定向
     }
   ]
 })

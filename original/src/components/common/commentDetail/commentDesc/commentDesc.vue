@@ -74,7 +74,8 @@
 export default {
   data() {
     return {
-      valueDisabled: 8.8 / 2
+      valueDisabled: 8.8 / 2,
+      
     };
   }
 };
