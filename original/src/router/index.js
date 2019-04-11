@@ -12,6 +12,9 @@ import newsdetail from '@/components/common/newsDetail'
 import commentdetail from '@/components/common/commentDetail'
 import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
+import bookdetail from '@/components/bookdetail/detail'
+import bookshelf from '@/components/bookshelf/book'
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -19,6 +22,17 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: Index
+    },
+   
+    {
+      path:'/bookshelf',
+      name: 'bookshelf',
+      component: bookshelf,
+    },
+    {
+      path:'/bookdetail',
+      name: 'bookdetail',
+      component: bookdetail,
     },
     {
       path: '/creation',
