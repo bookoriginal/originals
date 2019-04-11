@@ -8,12 +8,18 @@ import News from '@/components/news'
 import Register from '@/components/register'
 import Login from '@/components/login/index'
 import newsdetail from '@/components/common/newsDetail'
+import commentdetail from '@/components/common/commentDetail'
 export default new Router({
   routes: [
     {
       path: '/index',
       name: 'index',
       component: Index
+    },
+    {
+      path: '/commentdetail',
+      name: 'commentdetail',
+      component: commentdetail
     },
     {
       path: '/news',
