@@ -1,8 +1,8 @@
 <template>
     <div id="bookdetail">
-       <headers></headers>
+       
        <detail></detail>
-       <footers></footers>
+       
     </div>
 </template>
 <script>

@@ -116,13 +116,14 @@ export default {
 <style lang="less" scoped>
 .footer-all{
     width: 100%;
+    background: #fff;
     .footer-wrap{
         width: 1200px;
         margin:0 auto;
         padding-top: 30px;
         .footer-top{
             width: 1200px;
-            height: 340px;
+            height: 340px; 
             .footer-in{
                 width: 1200px;
                 height: 340px; 

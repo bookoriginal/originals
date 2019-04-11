@@ -14,7 +14,7 @@
                   <p><span>状态：哈哈哈</span><span>版权：哈哈哈</span></p>
                   <p class="book-int">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈</p>
                   <div class="book-button">
-                      <button class="book-read"> <router-link to='/bookcontent'>开始阅读</router-link></button>
+                      <button class="book-read" @click='read'>开始阅读</button>
                       <button class="book-col"> <router-link to='/bookcontent'>收藏本书</router-link></button>
                   </div>                  
               </div>
@@ -92,7 +92,12 @@ export default {
     mounted(){
             this.showList = this.totalproblemList.slice(0,this.pagesize)
     },
-    methods: {           
+    methods: { 
+            read(){
+                console.log(this)
+                this.$store.commit('get',{data:{tit:'2222',con:'345677654'}})
+                this.$store.commit('change')
+            } ,         
             method(index){
                 console.log(index);
                 var _start = (index-1) * this.pagesize;
