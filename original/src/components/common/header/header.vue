@@ -97,7 +97,7 @@ export default {
                 twolist:[{
                     tit:'我的书架'
                 }]},
-                {name:'我的创作',path:'/index',icon:'iconeen',icon2:'iconeen1',two:true,
+                {name:'我的创作',path:'/creation',icon:'iconeen',icon2:'iconeen1',two:true,
                 twolist:[{
                     tit:'我的创作'
                 }]},

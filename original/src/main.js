@@ -7,7 +7,8 @@ import router from './router'
 import iView from 'iview'
 import store from './store'
 import lazyload from 'vue-lazyload'
-import 'iview/dist/styles/iview.css'
+import 'iview/dist/styles/iview.css';
+import './common/style/all.css'
 import './common/style/reset.css';
 import './common/style/animate.css';
 Vue.use(iView)
