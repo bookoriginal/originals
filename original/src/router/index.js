@@ -17,11 +17,6 @@ export default new Router({
       component: Index
     },
     {
-      path: '/commentdetail',
-      name: 'commentdetail',
-      component: commentdetail
-    },
-    {
       path: '/news',
       name: 'news',
       component: News,
