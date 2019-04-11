@@ -1,10 +1,13 @@
 <template>
+<div>
     <div class="wapper">
         <Table :columns="columns7" :data="showList"></Table>
         <Page class="page" :total="this.totalproblemList.length" :page-size= 'this.pagesize' @on-change="method"
          />
+         
     </div>
-    
+    <router-view></router-view>
+</div>    
 </template>
 
 
@@ -53,7 +56,8 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.show(params.index)
+                                            // this.show(params.index)
+                                            this.$router.push({path: '/creation/bianji',params:{}});
                                         }
                                     }
                                 }, '编辑'),

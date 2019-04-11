@@ -1,11 +1,9 @@
 <template>
     <div class="waapper">
-        <!-- <headers></headers> -->
-        <!-- <Banner></Banner> -->
+      
         <div class="contain">
-            <router-link 
-               
-                to="/creation/btn"
+            <router-link    
+                to=""
                 active-class='sel'
             >
                 作品集
@@ -18,10 +16,7 @@
             >
                 写新小说
             </router-link>
-
-            <!-- <div class="btn">创作中的作品</div> -->
             <router-link 
-               
                 to="/creation/creatbook"
                 active-class='sel'
             >
@@ -29,25 +24,19 @@
             </router-link>
         </div>
         <router-view></router-view>>
-        <!-- <Footer></Footer> -->
-        <!-- <Up></Up> -->
     </div>
 </template>
 
 <script>
-// import headers  from '../index/header/header'
+
 import Footer  from '../common/footer/footer'
-// import Banner from '../sample/cre_banner'
-// import Up from './up.vue'
+
 export default {
     data () {
         return {        }    
     },
     components: {
-        // headers,
         Footer,
-        // Banner,
-        // Up
     }
 }
 </script>
@@ -59,7 +48,6 @@ export default {
         margin: 0 auto;
         height: 80px;
         display: flex;
-        // background:red;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
