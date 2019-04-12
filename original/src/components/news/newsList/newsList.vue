@@ -1,45 +1,7 @@
 <template>
   <div class="newsList">
     <ul class="list">
-      <li class="newsItem" @click="goDetail">
-        <div class="itemLeft"></div>
-        <div class="itemRight">
-          <div class="addTime">
-            <p class="year">2018</p>
-            <div class="data">
-              <span class="day">20</span>
-              <span class="cut"></span>
-              <span class="month">&nbsp;&nbsp;8</span>
-            </div>
-          </div>
-          <div class="contents">
-            <p class="title">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</p>
-            <p
-              class="con"
-            >内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-          </div>
-        </div>
-      </li>
-      <li class="newsItem">
-        <div class="itemLeft"></div>
-        <div class="itemRight">
-          <div class="addTime">
-            <p class="year">2018</p>
-            <div class="data">
-              <span class="day">20</span>
-              <span class="cut"></span>
-              <span class="month">&nbsp;&nbsp;8</span>
-            </div>
-          </div>
-          <div class="contents">
-            <p class="title">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</p>
-            <p
-              class="con"
-            >内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-          </div>
-        </div>
-      </li>
-      <li class="newsItem">
+      <li class="newsItem" @click="goDetail" v-for="(item,index) in 4">
         <div class="itemLeft"></div>
         <div class="itemRight">
           <div class="addTime">

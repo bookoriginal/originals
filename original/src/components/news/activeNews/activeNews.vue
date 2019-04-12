@@ -6,7 +6,7 @@
     </div>
     <div class="aNewList">
       <div class="modelWrapper">
-        <div class="newsModel">
+        <div class="newsModel" v-for="(item,index) in 3">
           <div class="title">
             <p>最新动态</p>
           </div>
@@ -18,133 +18,7 @@
             <div class="aImg"></div>
           </div>
           <ul class="aNewslist">
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-          </ul>
-        </div>
-        <div class="newsModel">
-          <div class="title">
-            <p>最新动态</p>
-          </div>
-          <div class="aContent">
-            <div class="aTime">
-              <p>03</p>
-              <span>2017-03</span>
-            </div>
-            <div class="aImg"></div>
-          </div>
-          <ul class="aNewslist">
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-          </ul>
-        </div>
-        <div class="newsModel">
-          <div class="title">
-            <p>最新动态</p>
-          </div>
-          <div class="aContent">
-            <div class="aTime">
-              <p>03</p>
-              <span>2017-03</span>
-            </div>
-            <div class="aImg"></div>
-          </div>
-          <ul class="aNewslist">
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
-              <span class="icon">></span>
-              <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
-              </div>
-              <span class="time">03-03</span>
-            </li>
-            <li>
+            <li v-for="(item,index) in 5">
               <span class="icon">></span>
               <div>
                 <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
@@ -159,9 +33,7 @@
 </template>
 
 <script>
-export default {
-
-};
+export default {};
 </script>
 
 <style lang="less" scoped>

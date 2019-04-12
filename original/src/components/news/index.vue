@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     isNewsDetailShow() {
-      console.log(this.newsPath);
+      this.newsPath = this.$route.path || this.newsPath;
+      console.log(this.$route,this.newsPath);
       switch (this.newsPath) {
         case "/news":
           this.newsDetailShow = false;
