@@ -82,6 +82,12 @@ export default new Router({
       path: '/comment',
       name: 'comment',
       component: Comment,
+      children: [
+        {
+          path: 'commentDetail',
+          component: commentdetail
+        }
+      ]
     },
     {
       path: '/register',

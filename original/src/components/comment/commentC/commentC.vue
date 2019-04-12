@@ -7,7 +7,7 @@
           <p>热门书籍</p>
         </div>
         <ul>
-          <li class="box">
+          <li class="box" v-for="(item,index) in 3" :key="index" @click="godetail(index)">
             <div class="left">
               <div class="head">
                 <span>[书籍]</span>
@@ -45,7 +45,12 @@ export default {
       comData: []
     };
   },
-}
+  methods: {
+    godetail(index) {
+      this.$router.push('/comment/commentDetail')
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -70,6 +75,7 @@ export default {
     }
     .box {
       display: flex;
+      margin-top: 25px;
       justify-content: space-between;
       border-bottom: 2px solid #eeeeee;
       .head {
