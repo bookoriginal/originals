@@ -1,43 +1,47 @@
 <template>
 <div class="form-data">
+     <Divider orientation='left' style="font-size:24px">作品信息</Divider>
     <div>
         <span>书名:</span>
-        <Input v-model="bookname.bookname" placeholder="Enter something..." style="width: 300px"
+        <Input v-model="bookname.bookname" placeholder="请输入要创建的书" style="width: 300px"
         @on-blur='bname'
          />
          <div style="height:38px;">
-             <Alert type="error" show-icon v-if="this.bookname.state">An error prompt</Alert>
+             <Alert type="error" show-icon v-if="this.bookname.state">请输入1-12个字符</Alert>
          </div>
     </div>
 
      <div>
         <span>类名:</span>
         <Select v-model="model8"  style="width:200px">
-                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.value }}</Option>
         </Select>
-        
+        <div style="height:38px;">
+             <Alert type="error" show-icon v-if="this.typename.state"></Alert>
+         </div>
     </div>
     <!-- 作品首个字母 -->
     <div>
         <span>作品首个字母:</span>
-        <Input v-model="firstname.firstname" placeholder="Enter something..." style="width: 300px"
+        <Input v-model="firstname.firstname" placeholder="作品首字母" style="width: 300px"
         @on-blur='fname'
          />
          <div style="height:30px;">
-             <Alert type="error" show-icon v-if="this.firstname.state">prompt</Alert>
+             <Alert type="error" show-icon v-if="this.firstname.state">1位字母a-zA-Z</Alert>
          </div>
     </div>
+
     <!-- 内容介绍 -->
     <div class="D_place">
-        <span>内容介绍:</span>
+        <span>内容简介:</span>
 
-        <Input v-model="desc.desc1" type="textarea" :autosize="{minRows: 5,maxRows: 5}" placeholder="Enter something..."
+        <Input v-model="desc.desc1" type="textarea" :autosize="{minRows: 5,maxRows: 5}" placeholder="请在此输入作品简介"
             @on-change='firstdesc'
         ></Input>
 
         <span class="num"><i>{{this.desc.num1}}</i>/400</span>
         <div style="height:30px;">
-            <Alert type="error" show-icon v-if="this.desc.state">prompt</Alert>
+            <Alert type="error" show-icon v-if="this.desc.state">字数不能超过400</Alert>
         </div>
     </div>
 
@@ -45,25 +49,27 @@
     <div class="D_place">
         <span>作者寄语:</span>
 
-        <Input v-model="s_desc.desc1" type="textarea" :autosize="{minRows: 3,maxRows: 3}" placeholder="Enter something..."
+        <Input style="" v-model="s_desc.desc1" type="textarea" :autosize="{minRows: 3,maxRows: 3}" placeholder="请在此输入作品寄语"
             @on-change='seconddesc'
         ></Input>
 
-        <span class="num"><i>{{this.s_desc.num1}}</i>/400</span>
+        <span class="num"><i>{{this.s_desc.num1}}</i>/20</span>
         <div style="height:30px;">
-            <Alert type="error" show-icon v-if="this.s_desc.state">prompt</Alert>
+            <Alert type="error" show-icon v-if="this.s_desc.state">字数不能超过20</Alert>
         </div>
     </div>
     <Button type="primary" @click="handleSubmit">上传内容</Button>
     <Button @click="handleReset('formCustom')" style="margin-left: 8px">添加到作品集</Button>
-
+    <Alert type="success" v-show="this.success.state" show-icon>上传成功</Alert>
 </div>
 </template>
 <script>
     export default {
         data () {
             return {
-              
+              success:{
+                  state:false
+              },
                 bookname:{
                     state:false,
                     bookname: ''
@@ -132,7 +138,7 @@
                if (reg.test(this.firstname.firstname)) {
                   this.firstname.state = false;
                 } else {
-                    this.firstname.state = false;
+                    this.firstname.state = true;
                 }
             },
             firstdesc(){
@@ -156,7 +162,7 @@
             handleSubmit(){
                 if(this.bookname.state === false & this.firstname.state === false & this.desc.state === false & this.s_desc.state === false & this.bookname.bookname !== ''){
                     console.log('成功');
-                    
+                    this.success.state = true;
                 }
             }
         },
