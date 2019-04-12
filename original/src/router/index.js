@@ -79,11 +79,6 @@ export default new Router({
       ]
     },
     {
-      path: '/commentdetail',
-      name: 'commentdetail',
-      component: commentdetail
-    },
-    {
       path: '/register',
       name: 'register',
       component: Register
