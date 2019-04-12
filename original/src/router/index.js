@@ -23,7 +23,6 @@ export default new Router({
       name: 'index',
       component: Index
     },
-   
     {
       path:'/bookshelf',
       name: 'bookshelf',
