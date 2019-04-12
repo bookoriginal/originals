@@ -1,12 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index/index'
-<<<<<<< HEAD
 import Creation from '@/components/creation'
-import News from '@/components/news'
 import ReadClub from '@/components/ReadClub'
-=======
-import Creation from '../components/creation'
 import Btn from '../components/sample/btn'
 import Upwork from '../components/sample/upwork'
 import Creatbook from '../components/sample/creatbook'
@@ -21,7 +17,6 @@ import bookdetail from '@/components/bookdetail/detail'
 import bookshelf from '@/components/bookshelf/book'
 
 Vue.use(Router)
->>>>>>> dev
 export default new Router({
   routes: [
     {
@@ -100,7 +95,6 @@ export default new Router({
       component: Login
     },
     {
-<<<<<<< HEAD
       path: '/creation',
       name: 'creation',
       component: Creation
@@ -113,12 +107,6 @@ export default new Router({
     {
       path:'/',
       redirect:'/index' //重定向
-    },
-    
-=======
-      path: '/',
-      redirect: '/index' //重定向
     }
->>>>>>> dev
   ]
 })
