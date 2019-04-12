@@ -1,9 +1,9 @@
 <template>
     <div class="waapper">
-      
+        <Banner></Banner>
         <div class="contain">
             <router-link    
-                to=""
+                to="/index"
                 active-class='sel'
             >
                 作品集
@@ -30,13 +30,14 @@
 <script>
 
 import Footer  from '../common/footer/footer'
-
+import Banner from '../sample/cre_banner'
 export default {
     data () {
-        return {        }    
+        return {}    
     },
     components: {
         Footer,
+        Banner
     }
 }
 </script>
@@ -51,7 +52,7 @@ export default {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        margin-top:80px;
+        // margin-top:80px;
         margin-bottom: 80px;
         a{
             display:inline-block;
@@ -69,6 +70,9 @@ export default {
             background: blue;
             height: 50px;
             line-height: 50px;
+        }
+        .sel{
+            background: orange;
         }
     }
     #xian{

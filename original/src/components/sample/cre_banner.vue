@@ -10,7 +10,6 @@
             <div class="demo-carousel"  style="height:200px;background:red">3asdfasdfasf
             </div>
         </CarouselItem>
-        
     </Carousel>
 </template>
 <script>

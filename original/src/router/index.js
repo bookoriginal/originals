@@ -27,35 +27,39 @@ export default new Router({
       name: 'creation',
       component: Creation,
       children:[
-        {
-          path:'btn',
-          name: 'btn',
-          component: Btn,
-        },
+          {
+            path:'btn',
+            name: 'btn',
+            component: Btn,
+          },
 
-        {
-          path:'upwork',
-          name: 'upwork',
-          component: Upwork,
-        },
-        {
-          path:'creatbook',
-          name: 'creatbook',
-          component: Creatbook,
-        },
-        {
-          path:'bianji',
-          name: 'bianji',
-          component: Bianji,
-        },
-        {
-          path:'bianjiing',
-          name: 'bianjiing',
-          component: Bianjiing,
-        },
-       
-
-      ]},
+          {
+            path:'upwork',
+            name: 'upwork',
+            component: Upwork,
+          },
+          {
+            path:'creatbook',
+            name: 'creatbook',
+            component: Creatbook,
+          },
+          {
+            path:'bianji',
+            name: 'bianji',
+            component: Bianji,
+          },
+          {
+            path:'bianjiing',
+            name: 'bianjiing',
+            component: Bianjiing,
+          },
+          {
+            path:'/creation',
+            redirect:'/creation/creatbook' //重定向
+          }
+      ]
+     
+    },
      
           {
           path: '/news',
