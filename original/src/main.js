@@ -20,6 +20,11 @@ Vue.use(lazyload, {
   loading: require('@/assets/lazyload.gif'),
   attempt: 1
 })
+
+router.afterEach((to,from,next) => {
+  window.scrollTo(0,0);
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

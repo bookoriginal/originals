@@ -25,7 +25,7 @@
                             enter-active-class='fadeIn animated'
                             >
                             <ul v-show="inputShow">
-                                <li v-for="(item,index) in sousuo">
+                                <li v-for="(item,index) in sousuo" :key="index">
                                     <i>{{index+1}}</i>
                                     {{item}}
                                 </li>
@@ -63,7 +63,7 @@
                                 enter-active-class='fadeIn animated'
                             >
                                 <ul  v-if="item.two" v-show='twolistnum===index'>
-                                    <li v-for="(item2,index) in item.twolist">
+                                    <li v-for="(item2,index) in item.twolist" :key="index" >
                                         {{item2.tit}}
                                     </li>
                                 </ul>
@@ -92,8 +92,8 @@ export default {
             arr:[
                 {name:'首页',path:'/index',icon:'',icon2:'',two:false},
                 {name:'新闻',path:'/news',icon:'',icon2:'',two:false},
-                {name:'读书会',path:'/index',icon:'',icon2:'',two:false},
-                {name:'我的书架',path:'/index',icon:'iconeen',icon2:'iconeen1',two:true,
+                {name:'读书会',path:'/readclub',icon:'',icon2:'',two:false},
+                {name:'我的书架',path:'/bookshelf',icon:'iconeen',icon2:'iconeen1',two:true,
                 twolist:[{
                     tit:'我的书架'
                 }]},
@@ -101,7 +101,7 @@ export default {
                 twolist:[{
                     tit:'我的创作'
                 }]},
-                {name:'我的书评',path:'/index',icon:'',icon2:'',two:false},
+                {name:'我的书评',path:'/comment',icon:'',icon2:'',two:false},
                 {name:'个人中心',path:'/index',icon:'',icon2:'',two:false}
             ],
             writerArr:['天蚕土豆','haha','hehe','lala','erer'],

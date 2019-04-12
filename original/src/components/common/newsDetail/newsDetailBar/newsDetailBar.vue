@@ -1,9 +1,9 @@
 <template>
   <div class="newsDetailBarWrap">
     <div class="newsDetailBar">
-        <span>首页</span>
+        <span @click="goindex">首页</span>
         <span>></span>
-        <span>新闻</span>
+        <span @click="gonews">新闻</span>
         <span>></span>
         <span class="content">正文</span>
     </div>
@@ -11,7 +11,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    gonews(){
+      this.$router.push('/news');
+    },
+    goindex(){
+      this.$router.push('/index');
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
