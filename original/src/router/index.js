@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index/index'
-import Creation from '../components/creation'
+import Creation from '@/components/creation'
+import ReadClub from '@/components/ReadClub'
 import Btn from '../components/sample/btn'
 import Upwork from '../components/sample/upwork'
 import Creatbook from '../components/sample/creatbook'
@@ -88,8 +89,18 @@ export default new Router({
       component: Login
     },
     {
-      path: '/',
-      redirect: '/index' //重定向
+      path: '/creation',
+      name: 'creation',
+      component: Creation
+    },
+    {
+      path: '/readclub',
+      name: 'readclub',
+      component: ReadClub
+    },
+    {
+      path:'/',
+      redirect:'/index' //重定向
     }
   ]
 })

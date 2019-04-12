@@ -92,7 +92,7 @@ export default {
             arr:[
                 {name:'首页',path:'/index',icon:'',icon2:'',two:false},
                 {name:'新闻',path:'/news',icon:'',icon2:'',two:false},
-                {name:'读书会',path:'/index',icon:'',icon2:'',two:false},
+                {name:'读书会',path:'/readclub',icon:'',icon2:'',two:false},
                 {name:'我的书架',path:'/bookshelf',icon:'iconeen',icon2:'iconeen1',two:true,
                 twolist:[{
                     tit:'我的书架'
