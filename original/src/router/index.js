@@ -10,9 +10,7 @@ import News from '@/components/news'
 import Register from '@/components/register'
 import Login from '@/components/login/index'
 import newsdetail from '@/components/common/newsDetail'
-<<<<<<< HEAD
-import Comment from '@/components/comment/index'
-=======
+import Comment from '@/components/comment'
 import commentdetail from '@/components/common/commentDetail'
 import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
@@ -20,7 +18,6 @@ import bookdetail from '@/components/bookdetail/detail'
 import bookshelf from '@/components/bookshelf/book'
 
 Vue.use(Router)
->>>>>>> 58d0a54e1a2b882e04a34a72ab33f3657530611c
 export default new Router({
   routes: [{
       path: '/index',
@@ -82,15 +79,14 @@ export default new Router({
       ]
     },
     {
-<<<<<<< HEAD
       path: '/comment',
       name: 'comment',
-      component: Comment
-=======
+      component: Comment,
+    },
+    {
       path: '/register',
       name: 'register',
       component: Register
->>>>>>> 58d0a54e1a2b882e04a34a72ab33f3657530611c
     },
     {
       path: '/login',
@@ -98,10 +94,6 @@ export default new Router({
       component: Login
     },
     {
-<<<<<<< HEAD
-      path: '/',
-      redirect: '/index' //重定向
-=======
       path: '/creation',
       name: 'creation',
       component: Creation
@@ -114,7 +106,6 @@ export default new Router({
     {
       path:'/',
       redirect:'/index' //重定向
->>>>>>> 58d0a54e1a2b882e04a34a72ab33f3657530611c
     }
   ]
 })

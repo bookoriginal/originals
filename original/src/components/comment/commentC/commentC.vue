@@ -45,17 +45,6 @@ export default {
       comData: []
     };
   },
-  methods: {
-    initData() {
-      let url = http://148.70.215.136:8000/user/book/
-     this.$axios.get(url).then(data=>{
-       console.log(data)
-     
-     })
-    },
-  created() {
-    this.initData();
-  }
 }
 </script>
 
