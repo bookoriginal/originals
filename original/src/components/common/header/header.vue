@@ -35,11 +35,11 @@
                     </div>
                     <span><i class="fa fa-search" aria-hidden="true"></i>搜索</span>
                 </div>
-                <ul class="header-login">
-                    <li>
+                <ul class="header-login" >
+                    <router-link tag='li' to="/register">
                         <i class="fa fa-gift" aria-hidden="true"></i>
                         <span>注册有礼</span>
-                    </li>
+                    </router-link>
                     <router-link tag='li' to="/login">
                         登录
                     </router-link>
@@ -92,8 +92,13 @@ export default {
             arr:[
                 {name:'首页',path:'/index',icon:'',icon2:'',two:false},
                 {name:'新闻',path:'/news',icon:'',icon2:'',two:false},
+<<<<<<< HEAD
                 {name:'读书会',path:'/readclub',icon:'',icon2:'',two:false},
                 {name:'我的书架',path:'/index',icon:'iconeen',icon2:'iconeen1',two:true,
+=======
+                {name:'读书会',path:'/index',icon:'',icon2:'',two:false},
+                {name:'我的书架',path:'/bookshelf',icon:'iconeen',icon2:'iconeen1',two:true,
+>>>>>>> dev
                 twolist:[{
                     tit:'我的书架'
                 }]},
