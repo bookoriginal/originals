@@ -48,8 +48,8 @@ export default {
   methods: {
     godetail(index) {
       this.$router.push('/comment/commentDetail')
-    }
-  }
+    },
+  },
 };
 </script>
 

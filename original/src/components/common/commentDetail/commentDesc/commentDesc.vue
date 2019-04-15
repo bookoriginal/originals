@@ -74,18 +74,26 @@
 export default {
   data() {
     return {
-      valueDisabled: 8.8 / 2,
-      
+      valueDisabled: 8.8 / 2
     };
   },
   methods: {
-    initDescData(id){
-      let url = ``
-    }
+    initDescData(id) {
+      let url = ``;
+    },
+    // initcommentDetailData() {
+    //   // let url = '/ol/original/introduce_novel/?id=1'
+    //    this.$axios.get('/hy/original/introduce_novel/?id=1').then(data => {
+    //    console.log(data)
+    //    })
+    // }
   },
   created() {
     console.log(this.$route.params.id);
-    this.initDescData(this.$route.params.id)
+    this.initDescData(this.$route.params.id);
+  },
+  mounted() {
+    // this.initcommentDetailData();
   }
 };
 </script>
