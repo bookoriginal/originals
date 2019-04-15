@@ -40,14 +40,14 @@ export default {
             position: fixed;
             top:0;
             left:0;
-            background: pink;
+            background: #ffb6c1;
             border:none;
             font-size: 20px;
         }
     }
     width: 100%;
     height: 100%;
-    background: pink;
+    background: #ffb6c1;
     padding-top: 50px;
     position: absolute;
     top:0;
