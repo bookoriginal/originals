@@ -74,8 +74,18 @@
 export default {
   data() {
     return {
-      valueDisabled: 8.8 / 2
+      valueDisabled: 8.8 / 2,
+      
     };
+  },
+  methods: {
+    initDescData(id){
+      let url = ``
+    }
+  },
+  created() {
+    console.log(this.$route.params.id);
+    this.initDescData(this.$route.params.id)
   }
 };
 </script>

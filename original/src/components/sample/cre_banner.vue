@@ -1,4 +1,5 @@
 <template>
+<div>
     <Carousel autoplay v-model="value2" loop>
         <CarouselItem>
             <div class="demo-carousel" style="height:200px;background:red">1sfasfasdf</div>
@@ -10,8 +11,8 @@
             <div class="demo-carousel"  style="height:200px;background:red">3asdfasdfasf
             </div>
         </CarouselItem>
-        
     </Carousel>
+</div>    
 </template>
 <script>
     export default {

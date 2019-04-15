@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index/index'
-
-
-import Creation from '../components/creation'
+import Creation from '@/components/creation'
+import ReadClub from '@/components/ReadClub'
 import Btn from '../components/sample/btn'
 import Upwork from '../components/sample/upwork'
 import Creatbook from '../components/sample/creatbook'
@@ -11,6 +10,7 @@ import News from '@/components/news'
 import Register from '@/components/register'
 import Login from '@/components/login/index'
 import newsdetail from '@/components/common/newsDetail'
+import Comment from '@/components/comment'
 import commentdetail from '@/components/common/commentDetail'
 import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
@@ -19,13 +19,11 @@ import bookshelf from '@/components/bookshelf/book'
 
 Vue.use(Router)
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/index',
       name: 'index',
       component: Index
     },
-   
     {
       path:'/bookshelf',
       name: 'bookshelf',
@@ -40,58 +38,85 @@ export default new Router({
       path: '/creation',
       name: 'creation',
       component: Creation,
-      children:[
+      children: [
         {
-          path:'btn',
+          path: 'btn',
           name: 'btn',
           component: Btn,
         },
 
         {
-          path:'upwork',
+          path: 'upwork',
           name: 'upwork',
           component: Upwork,
         },
         {
-          path:'creatbook',
+          path: 'creatbook',
           name: 'creatbook',
           component: Creatbook,
         },
         {
-          path:'bianji',
+          path: 'bianji',
           name: 'bianji',
           component: Bianji,
         },
         {
-          path:'bianjiing',
+          path: 'bianjiing',
           name: 'bianjiing',
           component: Bianjiing,
         },
-       
+        {
+          path:'creation',
+          redirect:'/creation/creatbook' 
+        }
+      ]
+    },
 
-      ]},
-     
-          {
-          path: '/news',
-          name: 'news',
-          component: News,
-          children: [
-            {
-              path: 'newsdetail',
-              component: newsdetail
-            }
-          ]
-        },
+    {
+      path: '/news',
+      name: 'news',
+      component: News,
+      children: [
         {
-          path: '/register',
-          name: 'register',
-          component: Register
-        },
+          path: 'newsdetail',
+          component: newsdetail
+        }
+      ]
+    },
+
+    {
+      path: '/comment',
+      name: 'comment',
+      component: Comment,
+      children: [
         {
-          path: '/login',
-          name: 'login',
-          component: Login
-        },
+          path: 'commentDetail',
+          component: commentdetail
+        }
+      ]
+    },
+
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/creation',
+      name: 'creation',
+      component: Creation
+    },
+    {
+      path: '/readclub',
+      name: 'readclub',
+      component: ReadClub
+    },
+    
     {
       path:'/',
       redirect:'/index' //重定向
