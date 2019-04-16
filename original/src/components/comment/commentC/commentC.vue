@@ -38,11 +38,16 @@
 </template>
 
 <script>
+import qs from 'qs';
 export default {
   data() {
     return {
       valueDisabled: 4.4,
-      comData: []
+      comData: [],
+      params: {
+        content: "战争",
+        tag: "Ture"
+      }
     };
   },
   methods: {
@@ -50,7 +55,9 @@ export default {
       this.$router.push("/comment/commentDetail");
     },
     initCommentData() {
-      this.$axios.get("/hy/original/introduce_novel/?id=1").then(data => {
+      let form = new FormData();
+    
+      this.$axios.post("/hy/original/search_novel/", qs.stringify(this.params)).then(data => {
         console.log(data);
       });
     }
