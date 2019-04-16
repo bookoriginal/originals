@@ -2,9 +2,9 @@
 <div>
     <div class="wapper">
         <Table :columns="columns7" :data="showList"></Table>
+
         <Page class="page" :total="this.totalproblemList.length" :page-size= 'this.pagesize' @on-change="method"
          />
-         
     </div>
     <router-view></router-view>
 </div>    
@@ -12,6 +12,7 @@
 
 
 <script>
+import axios from 'axios'
     export default {
         data () {
             return {
@@ -132,8 +133,18 @@
 
             }
         },
+        created() {
+        
+                this.$axios.get('/api/user/showown_book/')
+                .then(data=>{
+                    console.log(data.data)
+                    this.totalproblemList =  data.data
+                })
+         
+        },
         mounted(){
             this.showList = this.totalproblemList.slice(0,this.pagesize)
+          
         },
         methods: {
            

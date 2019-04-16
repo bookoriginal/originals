@@ -10,7 +10,6 @@
             </router-link>
 
              <router-link 
-                
                 to="/creation/upwork"
                 active-class='sel'
             >
