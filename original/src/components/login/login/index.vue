@@ -45,6 +45,7 @@
     </div>
 </template>
 <script>
+import getCookie from '@/common/js/getCookie'
 export default {
     data(){
         return{
@@ -68,7 +69,15 @@ export default {
     },
     methods:{
         login(){
-
+            this.$axios.post('/reg/ycusers/login/',{
+                username: this.phone,
+                password: this.password
+            }).then(data =>{
+                // console.log(getCookie("sessionid"))
+                console.log(data)
+                alert(data.msg);
+                this.$router.push('index')
+            })
         }
     }
 

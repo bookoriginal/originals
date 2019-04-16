@@ -221,11 +221,11 @@ export default {
                     }
                 }
                 .bottom{
-                    width: 100%;
+                    width: 850px;
                     height: 400px;
                     position: absolute;
                     ul{
-                        width: 100%;
+                        width: 850px;
                         height: 400px;
                         li{
                             width: 100%;

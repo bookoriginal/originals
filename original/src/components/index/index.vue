@@ -24,6 +24,9 @@ export default {
         selected,
         guess,
         recommend,
+    },
+    mounted () {
+        
     }
 }
 </script>

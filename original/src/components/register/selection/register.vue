@@ -23,19 +23,18 @@
                 <Alert type="error" show-icon style="border:0" v-show="passwordShow">请输入8-16位字母、数字</Alert>
             </div>
             <div class="input">
-                <Input v-model="picCode" type="text" placeholder="图片验证码" style="width: 124.5px" />
-                <span class="pic-code"></span>
+                <Input v-model="passwordtwo" prefix="md-lock" type="password" placeholder="请输入密码" style="width: 220px" />
             </div>
             <div class="warning">
-                <Alert type="error" show-icon style="border:0" v-show="picCodeShow">验证码错误</Alert>
+                <Alert type="error" show-icon style="border:0" v-show="passwordtwoShow">两次密码不一致</Alert>
             </div>
-            <div class="input">
+            <!-- <div class="input">
                 <Input v-model="Code" type="text" placeholder="手机验证码" style="width: 124.5px" />
-                <Button>获取验证码</Button>
+                <Button @click="getyzm()">获取验证码</Button>
             </div>
             <div class="warning">
                 <Alert type="error" show-icon style="border:0" v-show="codeShow">验证码错误</Alert>
-            </div>
+            </div> -->
             <div>
                 <Checkbox v-model="disabledSingle">
                     我已阅读并同意<router-link to='/index'>《书途阅读服务使用协议》</router-link>
@@ -51,29 +50,53 @@
     </div>
 </template>
 <script>
+
 export default {
     data(){
         return{
             phone:'',
             password:'',
-            picCode:'',
-            Code:'',
+            passwordtwo:'',
             disabledSingle:'',
             phoneShow:false,
             passwordShow:false,
-            picCodeShow:false,
-            codeShow:false,
+            passwordtwoShow:false,
             disabledSingleShow:false,
         }
     },
     methods:{
+        // getyzm(){
+        //     this.$axios.post('/reg/ycusers/check_code/',{
+        //         phone: this.phone
+        //     }).then(data => {
+        //         console.log(1)
+        //         console.log(data)
+        //     }).catch(err => {
+        //         console.log(err)
+        //     })
+        // },
         btn(){
-            console.log(this.$refs)
-            
-            if(!this.phoneShow&&!this.passwordShow&&!this.picCodeShow&&!this.codeShow&&!this.disabledSingleShow){
-                
+            if(!this.phoneShow&&!this.passwordShow&&!this.passwordtwoShow&&!this.disabledSingleShow){
+                if(this.phone !== ''&& this.password !== '' && this.passwordtwo !== ''&& this.disabledSingle !==''){
+                    this.$axios.post(
+                        '/reg/ycusers/register/',
+                        {
+                            username: this.phone,
+                            password: this.password,
+                            repassword: this.passwordtwo,
+                            phone: this.phone,
+                            icon: '../../../../common/img/photography.jpg'
+                        }
+                    ).then(data => {
+                        console.log(data);
+                        alert(data.msg);
+                        this.$router.push('login')
+                    })
+                }else{
+                    alert('请完善信息');
+                }
             }else{
-                return false;
+                alert('您输入有误')
             }
         },
         disabledSingleWarning(newdis){
@@ -99,12 +122,12 @@ export default {
                 this.passwordShow = true;
             }
         },
-        picCodeWarning(newPic){
-            let pic = 1997;
-            if(Number(newPic)===pic||newPic===''){
-                this.picCodeShow=false;
+        passwordtwoWarning(newPic){
+            // let pic = 1997;
+            if(newPic===this.password){
+                this.passwordtwoShow=false;
             }else{
-                this.picCodeShow = true;
+                this.passwordtwoShow = true;
             }
         },
         codeWarning(newCode){
@@ -123,12 +146,12 @@ export default {
         password:function(newPas){
             this.passwordWarning(newPas)
         },
-        picCode:function(newPic){
-            this.picCodeWarning(newPic)
+        passwordtwo:function(newPic){
+            this.passwordtwoWarning(newPic)
         },
-        Code:function(newCode){
-            this.codeWarning(newCode)
-        },
+        // Code:function(newCode){
+        //     this.codeWarning(newCode)
+        // },
         disabledSingle(newdis){
             this.disabledSingleWarning(newdis)
         },
@@ -137,6 +160,7 @@ export default {
         
     },
     mounted(){
+        
     }
 }
 </script>
