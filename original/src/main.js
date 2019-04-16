@@ -12,6 +12,7 @@ import './common/style/all.css'
 import './common/style/reset.css';
 import './common/style/animate.css';
 import qs from 'qs';
+import '@/mock'
 Vue.use(iView)
 
 Vue.config.productionTip = false

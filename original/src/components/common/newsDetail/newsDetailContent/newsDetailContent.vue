@@ -4,7 +4,7 @@
             <div class="title">考古发现，增强我们的文化自信(新语)</div>
             <div class="type">史 诺</div>
             <span class="time">2019年04月01日06:59</span>
-            <span>&nbsp;&nbsp;来源:</span>
+            <span>&nbsp;&nbsp;作者:</span>
             <span class="comefrom">人民网-人民日报</span>
             <div class="maintitle">一个个考古新发现，能为国家和民族历史提供例证，成为爱国主义教育载体</div>
             <div class="content">

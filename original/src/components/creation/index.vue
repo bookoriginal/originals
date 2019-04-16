@@ -1,6 +1,6 @@
 <template>
     <div class="waapper">
-        <!-- <Banner></Banner> -->
+        <!-- <banner></banner> -->
         <div class="contain">
             <router-link    
                 to="/index"
@@ -29,15 +29,14 @@
 
 <script>
 
-import Footer  from '../common/footer/footer'
-// import Banner from '../sample/cre_banner'
+// import footer  from '../common/footer/footer'
+// import banner from '@/components/readClub/readclub/banner'
 export default {
     data () {
         return {}    
     },
     components: {
-        Footer,
-        // Banner
+        // footer
     }
 }
 </script>

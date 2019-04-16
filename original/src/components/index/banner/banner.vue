@@ -2,7 +2,9 @@
     <div class="banner">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">{{item}}</div>
+                <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">
+                    <img :src="item.img" alt="">
+                </div>
             </div>
             <!-- 如果需要分页器 -->
             <div class="swiper-pagination"></div>
@@ -21,7 +23,7 @@
                                 </span>
                             </p>
                         </div>
-                        <router-link v-for="(item,index) in 8"  to="/index" :key="index">
+                        <router-link v-for="(item,index) in 8"  to="/news/newsdetail" :key="index">
                             <i class="fa fa-dot-circle-o" aria-hidden="true"></i><span>{{item}}</span>
                         </router-link>
                     </div>
@@ -35,7 +37,7 @@ import Swiper from 'swiper'
 export default {
     data(){
         return{
-            imgList:['hahah','fafasdfasdf','sdfafsdfa'],
+            imgList:[],
             hot:[
                 {
                     icon:'iconicon-1',
@@ -67,6 +69,11 @@ export default {
             })        
         },
         initData(){
+            this.$axios.get('/banner')
+            .then(data => {
+                console.log(data)
+                this.imgList = data
+            })
             this.$nextTick(()=>{
                 this.initSwiper()
             })
@@ -88,6 +95,9 @@ export default {
         box-shadow: 0 0 5px #000;
         .swiper-slide{
             background: #f66;
+            img{
+                width: 100%;
+            }
         }
     }
     .book-recommend{

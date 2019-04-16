@@ -9,12 +9,10 @@
     </div>
 </template>
 <script>
-// import headers from '@/common/header/header.vue';
 import banner from './banner/banner.vue';
 import selected from './selected/selected.vue';
 import guess from './guess/guess.vue';
 import recommend from './recommend/recommend.vue';
-// import footers from '@/common/footer/footer';
 export default {
     data(){
         return{
@@ -26,6 +24,9 @@ export default {
         selected,
         guess,
         recommend,
+    },
+    mounted () {
+        
     }
 }
 </script>
