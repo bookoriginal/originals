@@ -11,10 +11,12 @@ import 'iview/dist/styles/iview.css';
 import './common/style/all.css'
 import './common/style/reset.css';
 import './common/style/animate.css';
+import qs from 'qs';
 Vue.use(iView)
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios
+Vue.prototype.$qs = qs
 Vue.use(lazyload, {
   error: require('@/assets/error.jpg'),
   loading: require('@/assets/lazyload.gif'),

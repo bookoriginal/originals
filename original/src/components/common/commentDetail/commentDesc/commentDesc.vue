@@ -74,26 +74,36 @@
 export default {
   data() {
     return {
-      valueDisabled: 8.8 / 2
+      valueDisabled: 8.8 / 2,
+      params: {
+        content: "战争",
+        tag: "Ture"
+      }
     };
   },
   methods: {
     initDescData(id) {
       let url = ``;
     },
-    // initcommentDetailData() {
-    //   // let url = '/ol/original/introduce_novel/?id=1'
-    //    this.$axios.get('/hy/original/introduce_novel/?id=1').then(data => {
-    //    console.log(data)
-    //    })
-    // }
+    initcommentDetailData() {
+      // let url = '/ol/original/introduce_novel/?id=1'
+      let param = this.$qs.stringify(this.params)
+      this.$axios
+        .post(
+          "/hy/original/search_novel/",
+          param
+        )
+        .then(data => {
+          console.log(data);
+        });
+    }
   },
   created() {
     console.log(this.$route.params.id);
     this.initDescData(this.$route.params.id);
   },
   mounted() {
-    // this.initcommentDetailData();
+    this.initcommentDetailData();
   }
 };
 </script>

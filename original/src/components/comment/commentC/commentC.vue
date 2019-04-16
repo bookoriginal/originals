@@ -28,7 +28,7 @@
               <div class="more">查看更多书评>></div>
             </div>
             <div class="right">
-              <img src="../../../common/img/img_com.jpg" alt>
+              <img src="../../../common/img/img_com.jpg" alt="">
             </div>
           </li>
         </ul>
@@ -47,9 +47,18 @@ export default {
   },
   methods: {
     godetail(index) {
-      this.$router.push('/comment/commentDetail')
+      this.$router.push("/comment/commentDetail");
     },
+    initCommentData() {
+      this.$axios.get("/hy/original/introduce_novel/?id=1").then(data => {
+        console.log(data);
+      });
+    }
   },
+
+  mounted() {
+    this.initCommentData();
+  }
 };
 </script>
 

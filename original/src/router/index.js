@@ -16,6 +16,7 @@ import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
 import bookdetail from '@/components/bookdetail/detail'
 import bookshelf from '@/components/bookshelf/book'
+import Mine from '@/components/mine'
 
 Vue.use(Router)
 export default new Router({
@@ -33,6 +34,11 @@ export default new Router({
       path:'/bookdetail',
       name: 'bookdetail',
       component: bookdetail,
+    },
+    {
+      path:'/mine',
+      name: 'mine',
+      component: Mine,
     },
     {
       path: '/creation',
