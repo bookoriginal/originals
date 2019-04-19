@@ -10,7 +10,7 @@
         </div>
         <div class="content">
             <div  v-for="(item,index) of showList" :key="index" :class="['book',(index+1)%4==0?'active':'']">
-               <div class="book-img"><img src="@/assets/shu.jpg" alt=""  /> </div>
+               <div class="book-img"><img :src="item.img" alt=""  /> </div>
                <div class="book-content">
                    <h4>{{item.title}}</h4>
                    <h3>{{item.author}}</h3>
@@ -41,24 +41,24 @@ export default {
             datacount:12,
             pagesize:12,
             totalproblemList:[
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐' },
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐' },
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐'},
-                {img:'@/assets/error.jpg',title:'远来是你',author:'by：安锦年',msg:'得不到的永远在骚动，被偏爱的永远有恃无恐' },
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品' },
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品' },
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品信息作品信息作品信息'},
+                {img:'@/assets/error.jpg',title:'《时光小酒馆》',author:'by：张三',msg:'作品信息作品信息作品信息作品信息作品' },
             ],
             
         }
@@ -133,14 +133,9 @@ export default {
                .book-img{
                    width: 100%;
                    height: 150px;
-                   margin-bottom: 5px;
-                   img{
-                       width:100%;
-                    //    height: 100%;
-                   }
                }
                .book-content{
-                   height: 235px;
+                   height: 240px;
                    padding-left: 7px;
                    padding-right: 7px;
                    padding-top: 10px; 
@@ -155,8 +150,6 @@ export default {
                        font-size: 20px;
                    }
                    p{
-                       height: 90px;
-                       overflow: hidden;
                        font-size: 18px;
                        padding-top: 10px;
                        padding-bottom: 5px;

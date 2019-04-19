@@ -12,7 +12,8 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "axios": "^0.18.0",
-    "better-scroll": "^1.15.1",
+    "babel-plugin-import": "^1.11.0",
+    "better-scroll": "^1.15.2",
     "iview": "^3.3.3",
     "jsonp": "^0.2.1",
     "less": "^3.9.0",
