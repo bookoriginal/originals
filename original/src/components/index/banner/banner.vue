@@ -3,7 +3,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">1
-                    <!-- <img src='../../../common/img/1.jpg' alt=""> -->3
+                    <!-- <img src='../../../common/img/1.jpg' alt=""> -->
                 </div>
                 <div class="swiper-slide">2
                     <!-- <img src='../../../common/img/2.jpg' alt=""> -->
@@ -44,9 +44,9 @@ export default {
     data(){
         return{
             imgList:[
-                
-                // '../../../common/img/2.jpg',
-                // '../../../common/img/3.jpg',
+                '../../../common/img/2.jpg',
+                '../../../common/img/2.jpg',
+                '../../../common/img/3.jpg',
             ],
             hot:[
                 {
@@ -79,11 +79,12 @@ export default {
             })        
         },
         initData(){
-           
+           this.$nextTick(()=>{
+                this.initSwiper()
+            })
         }
     },
     created(){
-        this.initSwiper();
         this.initData();
     }
 }
