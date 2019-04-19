@@ -1,15 +1,16 @@
 <template>
     <div class="banner">
+        <!-- v-for='(item,index) in imgList' :key="index" -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">1
-                    <!-- <img src='../../../common/img/1.jpg' alt=""> -->
+                <div class="swiper-slide" >
+                    <img src='../../../common/img/news.jpg'>
                 </div>
-                <div class="swiper-slide">2
-                    <!-- <img src='../../../common/img/2.jpg' alt=""> -->
+                <div class="swiper-slide">
+                    <img src='../../../common/img/1.jpg' alt="">
                 </div>
-                <div class="swiper-slide">3
-                    <!-- <img src='../../../common/img/3.jpg' alt=""> -->
+                <div class="swiper-slide">
+                    <img src='../../../common/img/2.jpg' alt="">
                 </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -44,9 +45,9 @@ export default {
     data(){
         return{
             imgList:[
+                '../../../common/img/news.jpg',
                 '../../../common/img/2.jpg',
-                '../../../common/img/2.jpg',
-                '../../../common/img/3.jpg',
+                '../../../common/img/1.jpg',
             ],
             hot:[
                 {
@@ -102,6 +103,7 @@ export default {
             // background: #f66;
             img{
                 width: 100%;
+                height: 100%;
             }
         }
     }

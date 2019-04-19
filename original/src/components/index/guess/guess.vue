@@ -17,7 +17,7 @@
                         :class="i===num&&index===num2?'active':''"
                     >
                         <div class="bookimg">
-                            <img :src="item.img" alt="">
+                            <img src="../../../common/img/photography.jpg" alt="">
                         </div>
                         <div class="bookname">
                             <h3>{{item.tit}}</h3>
@@ -53,11 +53,11 @@ export default {
             num:0,
             num2:0,
             guessArr:[
-                {img:'',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
-                {img:'',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
-                {img:'',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
-                {img:'',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
-                {img:'',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'}
+                {img:'../../../common/img/photography.jpg',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
+                {img:'../../../common/img/photography.jpg',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
+                {img:'../../../common/img/photography.jpg',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
+                {img:'../../../common/img/photography.jpg',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'},
+                {img:'../../../common/img/photography.jpg',tit:"斗破苍穹",introduce:"好看的小说",writer:'天蚕土豆',fabulous:255,read:899,time:'1天前'}
             ]
         }
     },
@@ -107,7 +107,7 @@ export default {
             a{
                 width: 216px;
                 height: 350px;
-                background: #f66;
+                background: #fff;
                 border-radius: 10px;
                 float: left;
                 margin-right: 30px;

@@ -153,13 +153,6 @@ export default {
                 this.sessionid = null;
             }
         },
-        // delCookie(name){
-        //     this.sessionid = null;
-        //     var exp = new Date();
-        //     exp.setTime(exp.getTime() - 1);
-        //     var cval=getCookie(name);
-        //     if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-        // },
         setCookie(name, value, day) {
             if(day !== 0){
                 var expires = day * 24 * 60 * 60 * 1000;
@@ -193,12 +186,14 @@ export default {
         changexinxis(){
             this.xinxis = false;
         },
-        bookData(){
+        bookData(newMsg){
             if(this.msg===''){
                 this.inputShow=false;
             }else{
                 this.inputShow=true;
             }
+            let url = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=28883,1447,21114,28768,28723,28558,28830,28584,28604&wd=${newMsg}&req=2&csor=2&pwd=s&cb=jQuery110205677409758836958_1555693205478&_=1555693205484`
+            
         },
         watchScroll () {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -211,8 +206,8 @@ export default {
         }
     },
     watch:{
-        msg:function(){
-            this.bookData();
+        msg:function(newMsg){
+            this.bookData(newMsg);
         }
     },
     computed: {
@@ -338,9 +333,7 @@ export default {
                         float: left;
                         margin:0 5px;
                         line-height: 30px;
-                        i{
-                            font-style:none;
-                        }
+                       
                     }
                     .user{
                         float: left;
@@ -348,10 +341,10 @@ export default {
                     }
                     .xinxi{
                         position: absolute;
-                        top: 40px;
+                        top: 24px;
                         left: -100px;
                         z-index: 9;
-                        background: rgba(255,255,255,.5);
+                        background: rgba(214, 13, 13, 0.5);
                         width:200px;
                         height: 150px;
                     }
