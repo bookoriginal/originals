@@ -1,15 +1,17 @@
 <template>
   <div class="newsList" ref="newslist">
     <ul class="list">
-      <li class="newsItem" @click="goDetail" v-for="(item,index) in lists">
-        <div class="itemLeft"></div>
+      <li class="newsItem" @click="goDetail(item)" v-for="(item,index) in lists">
+        <div class="itemLeft">
+          <img :src="item.img" alt>
+        </div>
         <div class="itemRight">
           <div class="addTime">
-            <p class="year">{{item.year}}</p>
+            <p class="year">{{item.time | formatDate("yyyy")}}</p>
             <div class="data">
-              <span class="day">{{item.day}}</span>
+              <span class="day">{{item.time | formatDate("dd")}}</span>
               <span class="cut"></span>
-              <span class="month">&nbsp;&nbsp;{{item.month}}</span>
+              <span class="month">&nbsp;&nbsp;{{item.time | formatDate("M")}}</span>
             </div>
           </div>
           <div class="contents">
@@ -24,87 +26,34 @@
 </template>
 
 <script>
+import { Page } from "iview";
 export default {
+  props: ["newslist"],
   data() {
     return {
       pagesize: 5,
-      lists:[],
-      newslist: [
-        {
-          id: 1,
-          img: "",
-          year: "2018",
-          month: "9",
-          day: "20",
-          title: "标题标题标题标题标题标题标题标题标题标题标题1",
-          contents:
-            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        },
-        {
-          id: 2,
-          img: "",
-          year: "2018",
-          month: "8",
-          day: "20",
-          title: "标题标题标题标题标题标题标题标题标题标题标题2",
-          contents:
-            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        },
-        {
-          id: 3,
-          img: "",
-          year: "2018",
-          month: "7",
-          day: "20",
-          title: "标题标题标题标题标题标题标题标题标题标题标题3",
-          contents:
-            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        },
-        {
-          id: 4,
-          img: "",
-          year: "2018",
-          month: "7",
-          day: "20",
-          title: "标题标题标题标题标题标题标题标题标题标题标题4",
-          contents:
-            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        },
-        {
-          id: 5,
-          img: "",
-          year: "2018",
-          month: "7",
-          day: "20",
-          title: "标题标题标题标题标题标题标题标题标题标题标题5",
-          contents:
-            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        },
-        {
-          id: 6,
-          img: "",
-          year: "2018",
-          month: "7",
-          day: "20",
-          title: "标题标题标题标题标题标题标题标题标题标题标题6",
-          contents:
-            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        }
-      ]
+      lists: []
     };
   },
-  mounted() {
-    this.lists = this.newslist.slice(0,this.pagesize)
-  },
   methods: {
-    goDetail() {
-      this.$router.push("/news/newsdetail");
+    goDetail(item) {
+      console.log(item.id);
+      this.$router.push(`/news/newsdetail/${item.id}`);
     },
-    changePage(index){
+    changePage(index) {
       console.log(index);
-      let _start = (index-1)*this.pagesize;
-      let _end = index*this.pagesize;
-      this.lists = this.newslist.slice(_start,_end);
+      let _start = (index - 1) * this.pagesize;
+      let _end = index * this.pagesize;
+      this.lists = this.newslist.slice(_start, _end);
+    }
+  },
+  components: {
+    Page
+  },
+  watch: {
+    newslist(val) {
+      this.lists = val.slice(0, this.pagesize);
+      // console.log(val);
     }
   }
 };
@@ -128,7 +77,11 @@ export default {
       .itemLeft {
         width: 260px;
         height: 150px;
-        background: #f33;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        // background: #f33;
       }
       .itemRight {
         width: 900px;

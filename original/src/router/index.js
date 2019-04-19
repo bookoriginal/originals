@@ -72,7 +72,7 @@ export default new Router({
           component: Bianjiing,
         },
         {
-          path:'creation',
+          path:'/creation',
           redirect:'/creation/creatbook' 
         }
       ]
@@ -84,7 +84,7 @@ export default new Router({
       component: News,
       children: [
         {
-          path: 'newsdetail',
+          path: 'newsdetail/:id',
           component: newsdetail
         }
       ]
@@ -96,7 +96,7 @@ export default new Router({
       component: Comment,
       children: [
         {
-          path: 'commentDetail',
+          path: 'commentDetail/:id',
           component: commentdetail
         }
       ]
