@@ -4,26 +4,29 @@
       <span></span>
       <p>动态新闻</p>
     </div>
-    <div class="aNewList">
+    <div class="aNewList" v-if="lists.new.con.length">
       <div class="modelWrapper">
-        <div class="newsModel" v-for="(item,index) in 3">
+        <div class="newsModel" v-for="(type,index) in lists">
           <div class="title">
-            <p>最新动态</p>
+            <p>{{type.type}}</p>
           </div>
           <div class="aContent">
             <div class="aTime">
-              <p>03</p>
-              <span>2017-03</span>
+              <p>{{type.con[0].time | formatDate("dd")}}</p>
+              <span>{{type.con[0].time | formatDate("yyyy-MM")}}</span>
             </div>
-            <div class="aImg"></div>
+            <div class="aImg">
+              <img :src="type.con[0].img" alt="">
+            </div>
           </div>
           <ul class="aNewslist">
-            <li v-for="(item,index) in 5">
+            <li v-for="(item,index) in type.con" v-if="!index==0">
               <span class="icon">></span>
               <div>
-                <p>热烈庆祝XXXXXXXXXX健康管理机构</p>
+                <p>{{item.title}}</p>
+                <!-- <img :src="item.img" alt=""> -->
               </div>
-              <span class="time">03-03</span>
+              <span class="time">{{item.time | formatDate("MM-dd")}}</span>
             </li>
           </ul>
         </div>
@@ -33,7 +36,51 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["newslist"],
+  data() {
+    return {
+      lists: {
+        new: { type: "最新动态", con: [] },
+        zx: { type: "新闻资讯", con: [] },
+        dt: { type: "行业动态", con: [] }
+      }
+    };
+  },
+  methods: {
+    initActionNews() {
+      this.newslist.map((item, index) => {
+        switch (item.type) {
+          case "最新动态":
+            if (this.lists.new.con.length < 6) {
+              this.lists.new.con.push(item);
+            }
+            break;
+          case "新闻资讯":
+            if (this.lists.zx.con.length < 6) {
+              this.lists.zx.con.push(item);
+            }
+            break;
+          case "行业动态":
+            if (this.lists.dt.con.length < 6) {
+              this.lists.dt.con.push(item);
+            }
+            break;
+          default:
+            break;
+        }
+      });
+      // console.log(this.lists);
+    }
+  },
+  watch: {
+    newslist(val) {
+      // this.lists = val.slice(0, this.pagesize);
+      // console.log(val);
+      this.initActionNews();
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -113,6 +160,10 @@ export default {};
           .aImg {
             flex: 1;
             background: #85bcda;
+            img{
+              width: 100%;
+              height: 100%;
+            }
           }
         }
         .aNewslist {

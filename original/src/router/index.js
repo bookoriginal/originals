@@ -84,7 +84,7 @@ export default new Router({
       component: News,
       children: [
         {
-          path: 'newsdetail',
+          path: 'newsdetail/:id',
           component: newsdetail
         }
       ]

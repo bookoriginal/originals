@@ -7,28 +7,26 @@
           <p>热门书籍</p>
         </div>
         <ul>
-          <li class="box" v-for="(item,index) in 3" :key="index" @click="godetail(index)">
+          <li class="box" v-for="(item,index) in comData" :key="index" @click="godetail(index)">
             <div class="left">
               <div class="head">
                 <span>[书籍]</span>
-                <span>漫画之王</span>
+                <span>{{item.title}}</span>
               </div>
               <div class="middle">
                 <Rate disabled allow-half v-model="valueDisabled"/>
-                <span>8.8</span>
-                <span>刘静娴/黄天一/武汉大学出版社/2019</span>
+                <span>{{item.rate}}</span>
+                <span>{{item.author}}/{{item.fy}}/{{item.publishinghouse}}/{{item.year}}</span>
               </div>
               <div class="bottom">
                 <div>读者评论</div>
-                <span>瞬息之间:</span>
-                <span
-                  class="cont"
-                >画风和上色都极具特色，极具有复古彩漫的韵味，线条又带有冷战后欧美漫画的特色，可以当做新加坡政治任务和社会变迁的简史来读，阅读体验非常奇妙……</span>
+                <span>{{item.common[0].common_author}}:</span>
+                <span class="cont">{{item.common[0].content}}</span>
               </div>
               <div class="more">查看更多书评>></div>
             </div>
             <div class="right">
-              <img src="../../../common/img/img_com.jpg" alt="">
+              <img src="../../../common/img/img_com.jpg" alt>
             </div>
           </li>
         </ul>
@@ -38,6 +36,7 @@
 </template>
 
 <script>
+import { Rate } from "iview";
 export default {
   data() {
     return {
@@ -50,14 +49,19 @@ export default {
       this.$router.push("/comment/commentDetail");
     },
     initCommentData() {
-      this.$axios.get("/hy/original/introduce_novel/?id=1").then(data => {
+      this.comData = []
+      this.$axios.get("/commonlists").then(data => {
         console.log(data);
+        this.comData = data;
       });
+      console.log(this.comData);
     }
   },
-
-  mounted() {
+  created() {
     this.initCommentData();
+  },
+  components: {
+    Rate
   }
 };
 </script>

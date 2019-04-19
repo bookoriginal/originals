@@ -20,7 +20,7 @@
           </div>
           <div class="commentator">
             <span class="cname">评论人:&nbsp;瞬间之美</span>
-            <span class="ctime">评论时间:&nbsp;2019-3-2 11:46</span>
+            <span class="ctime">评论时间:&nbsp;{{rateTime | formatDate("yyyy-MM-dd hh:mm:ss")}}</span>
           </div>
           <div class="contents">
             <p>昨天（4月6日）晚上新民晚报记者收到网友爆料：美国联合航空公司今天下午由浦东机场飞往纽约纽瓦克机场的UA87航班由浦东机场起飞后不久返航。</p>
@@ -42,21 +42,16 @@
 </template>
 
 <script>
-import { formatDate } from "../../../../common/js/time";
+import { Icon, Input } from "iview";
 export default {
   data() {
     return {
       reply: "",
-      zan: false
+      zan: false,
+      rateTime: "2019-04-15T16:05:28.434000+08:00"
     };
   },
-  filters: {
-    formatDate(time) {
-      let date = new Date(time);
-      return formatDate(date, "yyyy年MM月dd日hh:mm");
-      //此处formatDate是一个函数，将其封装在common/js/date.js里面，便于全局使用
-    }
-  },
+  mounted() {},
   methods: {
     dianzan(index) {
       this.zan = !this.zan;
@@ -69,6 +64,10 @@ export default {
         this.$refs.zan[index].type = "md-heart-outline";
       }
     }
+  },
+  components: {
+    Icon,
+    Input
   }
 };
 </script>

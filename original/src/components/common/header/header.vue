@@ -126,7 +126,7 @@ export default {
             this.twolistnum=0;
         },
         changeTwoList(index){
-            console.log(index)
+            // console.log(index)
             this.twolistnum = index;
         },
         bookData(){

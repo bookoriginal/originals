@@ -58,11 +58,26 @@
           <p class="rate_num">8.8</p>
           <Rate disabled allow-half v-model="valueDisabled"/>
           <div class="star">
-            <p>5星&nbsp;</p>
-            <p>4星&nbsp;</p>
-            <p>3星&nbsp;</p>
-            <p>2星&nbsp;</p>
-            <p>1星&nbsp;</p>
+            <p>
+              5星&nbsp;
+              <span class="five"></span>&nbsp;61.8%
+            </p>
+            <p>
+              4星&nbsp;
+              <span class="four"></span>&nbsp;26.5%
+            </p>
+            <p>
+              3星&nbsp;
+              <span class="three"></span>&nbsp;11.7%
+            </p>
+            <p>
+              2星&nbsp;
+              <span class="two"></span>&nbsp;0.0%
+            </p>
+            <p>
+              1星&nbsp;
+              <span class="one"></span>&nbsp;0.0%
+            </p>
           </div>
         </div>
       </div>
@@ -71,6 +86,7 @@
 </template>
 
 <script>
+import { Rate } from "iview";
 export default {
   data() {
     return {
@@ -87,23 +103,21 @@ export default {
     },
     initcommentDetailData() {
       // let url = '/ol/original/introduce_novel/?id=1'
-      let param = this.$qs.stringify(this.params)
-      this.$axios
-        .post(
-          "/hy/original/search_novel/",
-          param
-        )
-        .then(data => {
-          console.log(data);
-        });
+      let param = this.$qs.stringify(this.params);
+      this.$axios.post("/hy/original/search_novel/", param).then(data => {
+        // console.log(data);
+      });
     }
   },
   created() {
-    console.log(this.$route.params.id);
+    // console.log(this.$route.params.id);
     this.initDescData(this.$route.params.id);
   },
   mounted() {
     this.initcommentDetailData();
+  },
+  components: {
+    Rate
   }
 };
 </script>
@@ -154,8 +168,8 @@ export default {
       }
       .rate {
         padding-left: 40px;
-        width: 180px;
         .rate_num {
+          width: 180px;
           height: 70px;
           width: 100%;
           font-size: 40px;
@@ -166,6 +180,20 @@ export default {
           font-size: 16px;
           padding-top: 10px;
           line-height: 34px;
+          span {
+            display: inline-block;
+            background: #ff9c58;
+            height: 14px;
+          }
+          .five {
+            width: 94px;
+          }
+          .four {
+            width: 48px;
+          }
+          .three {
+            width: 32px;
+          }
         }
       }
     }

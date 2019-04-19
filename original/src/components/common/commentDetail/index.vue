@@ -11,7 +11,7 @@ import comments from './comment/comment'
 export default {
   components: {
     commentdesc,
-    comments
+    comments,
   }
 }
 </script>

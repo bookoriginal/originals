@@ -1,30 +1,58 @@
 <template>
   <div class="newsRelaxWrap">
     <div class="newsRelaxBar">
-      <div class="relaxNews">说些什么</div>
-      <div class="commentList" v-for="(item,index) in 3" :key="index">
-        <img class="userimg" src="@/common/img/photography.jpg" alt>
-        <div class="commentDesc">
-          <div class="textDesc">
-            <div class="textTitle">
-              <p>想象力丰富，内容紧凑</p>
-            </div>
-            <div class="commentator">
-              <span class="cname">评论人:&nbsp;瞬间之美</span>
-              <span class="ctime">评论时间:&nbsp;2019-3-2 11:46</span>
-            </div>
-            <div class="contents">
-              <p>昨天（4月6日）晚上新民晚报记者收到网友爆料：美国联合航空公司今天下午由浦东机场飞往纽约纽瓦克机场的UA87航班由浦东机场起飞后不久返航。</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="relaxNews">相关新闻</div>
+      <ul class="relaxList">
+        <li class="relax" v-for="(item,index) in newslist" :key="index" @click="goDetail(item)">{{item.title}}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["newstype"],
+  data() {
+    return {
+      newslist: []
+    };
+  },
+  methods: {
+    goDetail(item) {
+      // console.log(item.id);
+      this.$router.push(`/news/newsdetail/${item.id}`);
+    },
+    newslists(){
+      let url = `/newslist`;
+      this.$axios.get(url).then(data => {
+        // console.log(data.data);
+        let arr = [];
+        // console.log(data);
+        data.map((item, index) => {
+          // console.log(item.type);
+          if (item.type===this.newstype.type&&arr.length<8&&item.id!=this.newstype.id) {
+            arr.push(item)
+          }
+        });
+        arr.sort((a, b) => {
+          return a.time > b.time ? -1 : 1;
+        });
+        this.newslist = arr;
+        console.log(arr);
+        
+      });
+    }
+  },
+  created() {
+    this.newslists()
+  },
+  watch: {
+    newstype(val) {
+      this.newslists()
+      console.log(val);
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -39,59 +67,20 @@ export default {};
     .relaxNews {
       font-size: 26px;
       margin-top: 110px;
-      margin-block-end: 28px;
+      margin-block-end: 28px; 
     }
-    .commentList {
-      padding-top: 28px;
-      padding-bottom: 49px;
-      border-top: 2px solid #eeeeee;
-      display: flex;
-      .userimg {
-        width: 142px;
-        height: 142px;
-        border-radius: 50%;
-        margin-right: 20px;
-      }
-      .commentDesc {
+    .relaxList {
+        height: 160px;
         display: flex;
         flex-direction: column;
-        .textDesc {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          .textTitle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 25px;
-            font-weight: 600;
-            color: #333;
-            width: 100%;
-            height: 52px;
-          }
-          .commentator {
-            font-weight: 500;
-            font-size: 18px;
-            color: #b5b5b5;
-            height: 42px;
-            line-height: 42px;
-            span {
-              display: inline-block;
-            }
-            .cname {
-              width: 240px;
-            }
-          }
-          .contents {
-            margin: 18px 0;
-            width: 1000px;
-            line-height: 28px;
-            font-size: 18px;
-            color: #656565;
-          }
+        flex-wrap: wrap;
+        font-size: 16px;
+        .relax {
+          width: 450px;
+          height: 40px;
+          line-height: 40px;
         }
       }
-    }
   }
 }
 </style>
