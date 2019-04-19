@@ -96,7 +96,7 @@ export default new Router({
       component: Comment,
       children: [
         {
-          path: 'commentDetail',
+          path: 'commentDetail/:id',
           component: commentdetail
         }
       ]

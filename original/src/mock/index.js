@@ -2,10 +2,11 @@ import Mock from 'mockjs';
 
 import bannerlist from './banner';
 import newslist from './news';
-import common from './common';
+import comment from './comment';
 
 Mock.mock('/banner', 'get', bannerlist)
 Mock.mock('/newslist', 'get', newslist.newslist)
 Mock.mock('/newsdetail', 'post', newslist.newsdetail)
 
-Mock.mock('/commonlists', 'get', common.commonlists)
+Mock.mock('/commentlists', 'get', comment.commentlists)
+Mock.mock('/commentdetail', 'post', comment.commentdetail)

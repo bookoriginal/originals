@@ -2,60 +2,60 @@
   <div class="commentdesc">
     <div class="title">
       <span></span>
-      <p>漫画之王</p>
+      <p>{{commentdesc.title}}</p>
     </div>
     <div class="content">
       <img class="cover" src="@/common/img/book_cover.jpg" alt>
       <div class="desc">
         <p>
           作者：
-          <span>刘敬贤</span>
+          <span>{{commentdesc.author}}</span>
         </p>
         <p>
           出版社：
-          <span>武汉大学出版社</span>
+          <span>{{commentdesc.publishinghouse}}</span>
         </p>
         <p>
           出品方：
-          <span>鹿书deerbook</span>
+          <span>{{commentdesc.cpf}}</span>
         </p>
         <p>
           副标题：
-          <span>陈福财正传</span>
+          <span>{{commentdesc.f_title}}</span>
         </p>
         <p>
           原作名：
-          <span>The Art of Charlie Chan Hock Chye</span>
+          <span>{{commentdesc.yzm}}</span>
         </p>
         <p>
           译者：
-          <span>黄天怡</span>
+          <span>{{commentdesc.fy}}</span>
         </p>
         <p>
           出版年：
-          <span>2019-3-1</span>
+          <span>{{commentdesc.year}}</span>
         </p>
         <p>
           页数：
-          <span>328</span>
+          <span>{{commentdesc.page}}</span>
         </p>
         <p>
           定价：
-          <span>188.00元</span>
+          <span>{{commentdesc.price}}.00元</span>
         </p>
         <p>
           装帧：
-          <span>精装</span>
+          <span>{{commentdesc.zz}}</span>
         </p>
         <p>
           ISBN：
-          <span>1234567898765432</span>
+          <span>{{commentdesc.ISBN}}</span>
         </p>
       </div>
       <div class="score">
         <p class="score_title">评分:</p>
         <div class="rate">
-          <p class="rate_num">8.8</p>
+          <p class="rate_num">{{commentdesc.rate}}</p>
           <Rate disabled allow-half v-model="valueDisabled"/>
           <div class="star">
             <p>
@@ -88,36 +88,25 @@
 <script>
 import { Rate } from "iview";
 export default {
+  props: ["detail"],
   data() {
     return {
       valueDisabled: 8.8 / 2,
-      params: {
-        content: "战争",
-        tag: "Ture"
-      }
+      // params: {
+      //   content: "战争",
+      //   tag: "Ture"
+      // }
+      commentdesc: {}
     };
-  },
-  methods: {
-    initDescData(id) {
-      let url = ``;
-    },
-    initcommentDetailData() {
-      // let url = '/ol/original/introduce_novel/?id=1'
-      let param = this.$qs.stringify(this.params);
-      this.$axios.post("/hy/original/search_novel/", param).then(data => {
-        // console.log(data);
-      });
-    }
-  },
-  created() {
-    // console.log(this.$route.params.id);
-    this.initDescData(this.$route.params.id);
-  },
-  mounted() {
-    this.initcommentDetailData();
   },
   components: {
     Rate
+  },
+  watch: {
+    detail(val) {
+      this.commentdesc = val;
+      // console.log(val);
+    }
   }
 };
 </script>

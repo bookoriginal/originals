@@ -1,6 +1,6 @@
 import Mock, { Random } from 'mockjs'
 let arr = []
-const commonlists = function () {
+const commentlists = function () {
   for (var i = 0; i < 5; i++) {
     let obj = Mock.mock({
       id: i,
@@ -37,7 +37,7 @@ const commonlists = function () {
   return arr
 }
 
-const commondetail = function (options) {
+const commentdetail = function (options) {
   let obj = JSON.parse(options.body).params
   // console.log(JSON.parse(options.body).params);
   let darr = arr.map(item => {
@@ -51,6 +51,6 @@ const commondetail = function (options) {
   return { data: darr }
 }
 export default {
-  commonlists,
-  commondetail
+  commentlists,
+  commentdetail
 }

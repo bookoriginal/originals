@@ -4,13 +4,13 @@
       <span></span>
       <p>读者评论</p>
     </div>
-    <div class="commentTitle">短评&nbsp;&nbsp;(全部3条)</div>
-    <div class="commentList" v-for="(item,index) in 3" :key="index">
+    <div class="commentTitle">短评&nbsp;&nbsp;(全部{{this.len}}条)</div>
+    <div class="commentList" v-for="(item,index) in comment" :key="index">
       <img class="userimg" src="@/common/img/photography.jpg" alt>
       <div class="commentDesc">
         <div class="textDesc">
           <div class="textTitle">
-            <p>想象力丰富，内容紧凑</p>
+            <p>{{item.common_title}}</p>
             <div class="zan">
               <span @click="dianzan(index)">
                 <Icon ref="zan" type="md-heart-outline"/>
@@ -19,11 +19,11 @@
             </div>
           </div>
           <div class="commentator">
-            <span class="cname">评论人:&nbsp;瞬间之美</span>
-            <span class="ctime">评论时间:&nbsp;{{rateTime | formatDate("yyyy-MM-dd hh:mm:ss")}}</span>
+            <span class="cname">评论人:&nbsp;{{item.common_author}}</span>
+            <span class="ctime">评论时间:&nbsp;{{item.add_time}}</span>
           </div>
           <div class="contents">
-            <p>昨天（4月6日）晚上新民晚报记者收到网友爆料：美国联合航空公司今天下午由浦东机场飞往纽约纽瓦克机场的UA87航班由浦东机场起飞后不久返航。</p>
+            <p>{{item.content}}</p>
           </div>
         </div>
         <div class="reply">
@@ -44,11 +44,14 @@
 <script>
 import { Icon, Input } from "iview";
 export default {
+  props: ["comment"],
   data() {
     return {
       reply: "",
       zan: false,
-      rateTime: "2019-04-15T16:05:28.434000+08:00"
+      rateTime: "2019-04-15T16:05:28.434000+08:00",
+      com:{},
+      len:''
     };
   },
   mounted() {},
@@ -68,6 +71,13 @@ export default {
   components: {
     Icon,
     Input
+  },
+   watch: {
+    comment(val) {
+      this.com = val;
+      this.len = val.length
+      console.log(val);
+    }
   }
 };
 </script>

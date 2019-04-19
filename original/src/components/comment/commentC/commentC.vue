@@ -1,13 +1,13 @@
 <template>
   <div class="commentC">
     <ul class="wraper">
-      <li>
+      <li v-for="(type,index) in comData" :key="index">
         <div class="title">
           <span></span>
-          <p>热门书籍</p>
+          <p>{{type.type}}</p>
         </div>
         <ul>
-          <li class="box" v-for="(item,index) in comData" :key="index" @click="godetail(index)">
+          <li class="box" v-for="(item,index) in type.con" :key="index" @click="godetail(item)">
             <div class="left">
               <div class="head">
                 <span>[书籍]</span>
@@ -41,20 +41,31 @@ export default {
   data() {
     return {
       valueDisabled: 4.4,
-      comData: []
+      comData: {
+        hot: { type: "热门书籍", con: [] },
+        other: { type: "其他", con: [] }
+      }
     };
   },
   methods: {
-    godetail(index) {
-      this.$router.push("/comment/commentDetail");
+    godetail(item) {
+      this.$router.push(`/comment/commentDetail/${item.id}`);
     },
     initCommentData() {
-      this.comData = []
-      this.$axios.get("/commonlists").then(data => {
-        console.log(data);
-        this.comData = data;
+      this.$axios.get("/commentlists").then(data => {
+        // console.log(data);
+        data.map((item, index) => {
+          // console.log(item);
+          if (item.hot < 1000) {
+            this.comData.other.con.push(item);
+          } else {
+            this.comData.hot.con.push(item);
+          }
+        });
+        // this.comData = data;
+        // console.log(this.comData);
       });
-      console.log(this.comData);
+      // console.log(this.comData);
     }
   },
   created() {
