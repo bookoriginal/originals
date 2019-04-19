@@ -10,7 +10,7 @@
           <div class="title">
             <p>{{type.type}}</p>
           </div>
-          <div class="aContent">
+          <div class="aContent" @click="goDetail(type.con[0])">
             <div class="aTime">
               <p>{{type.con[0].time | formatDate("dd")}}</p>
               <span>{{type.con[0].time | formatDate("yyyy-MM")}}</span>
@@ -20,7 +20,7 @@
             </div>
           </div>
           <ul class="aNewslist">
-            <li v-for="(item,index) in type.con" v-if="!index==0">
+            <li v-for="(item,index) in type.con" v-if="!index==0" @click="goDetail(item)">
               <span class="icon">></span>
               <div>
                 <p>{{item.title}}</p>
@@ -48,6 +48,10 @@ export default {
     };
   },
   methods: {
+    goDetail(item) {
+      console.log(item.id);
+      this.$router.push(`/news/newsdetail/${item.id}`);
+    },
     initActionNews() {
       this.newslist.map((item, index) => {
         switch (item.type) {
