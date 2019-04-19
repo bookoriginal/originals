@@ -16,6 +16,7 @@ import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
 import bookdetail from '@/components/bookdetail/detail'
 import bookshelf from '@/components/bookshelf/book'
+import Changepass from '@/components/login/changepass'
 
 Vue.use(Router)
 export default new Router({
@@ -104,7 +105,11 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      children: [{
+        path: 'changepass',
+        component: Changepass
+      }]
     },
     {
       path: '/creation',

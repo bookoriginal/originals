@@ -12,7 +12,7 @@ import './common/style/all.css'
 import './common/style/reset.css';
 import './common/style/animate.css';
 import '@/mock'
-Vue.use(iView)
+// Vue.use(iView)
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios

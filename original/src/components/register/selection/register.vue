@@ -50,7 +50,12 @@
     </div>
 </template>
 <script>
-
+import Vue from 'vue'
+import { Alert, Button, Input,Checkbox } from 'iview'
+Vue.component('Alert',Alert)
+Vue.component('Button',Button);
+Vue.component('Input',Input);
+Vue.component('Checkbox',Checkbox);
 export default {
     data(){
         return{
@@ -65,16 +70,6 @@ export default {
         }
     },
     methods:{
-        // getyzm(){
-        //     this.$axios.post('/reg/ycusers/check_code/',{
-        //         phone: this.phone
-        //     }).then(data => {
-        //         console.log(1)
-        //         console.log(data)
-        //     }).catch(err => {
-        //         console.log(err)
-        //     })
-        // },
         btn(){
             if(!this.phoneShow&&!this.passwordShow&&!this.passwordtwoShow&&!this.disabledSingleShow){
                 if(this.phone !== ''&& this.password !== '' && this.passwordtwo !== ''&& this.disabledSingle !==''){
@@ -90,7 +85,7 @@ export default {
                     ).then(data => {
                         console.log(data);
                         alert(data.msg);
-                        this.$router.push('login')
+                        this.$router.pdush('login')
                     })
                 }else{
                     alert('请完善信息');

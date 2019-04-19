@@ -35,7 +35,7 @@
                     </div>
                     <span><i class="fa fa-search" aria-hidden="true"></i>搜索</span>
                 </div>
-                <ul class="header-login" >
+                <ul class="header-login" v-if="!sessionid">
                     <router-link tag='li' to="/register">
                         <i class="fa fa-gift" aria-hidden="true"></i>
                         <span>注册有礼</span>
@@ -47,6 +47,29 @@
                         <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
                     </li>
                 </ul>
+                <div class="header-login" v-if="sessionid" 
+                @mouseover="changexinxi()"
+                @mouseout="changexinxis()"
+                >
+                    <router-link tag='div' to="/" class='user-name'>
+                        <i>用户{{phone}}</i>
+                    </router-link>
+                    <p class="user">
+                        <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                    </p>
+                    <transition 
+                        enter-active-class='fadeIn animated'
+                    >
+                        <div v-show='xinxis' class="xinxi"
+                        @mouseover="changexinxi()"
+                        @mouseout="changexinxis()"
+                        >
+                            用户<br />
+                            {{phone}}
+                            <Button type="error" style="width: 150px" @click="delCookie('token')">退出登录</Button>
+                        </div>
+                    </transition>
+                </div>
             </div>
             <div :class="['header-bottom',navBarFixed?'navBarWrap':'']" >
                 <div class="bottom-wrap">
@@ -86,6 +109,11 @@
     </div>
 </template>
 <script>
+import {mapState} from 'vuex'
+import Vue from 'vue'
+import { Button } from 'iview'
+const bus = new Vue()
+Vue.component('Button',Button);
 export default {
     data(){
         return{
@@ -111,10 +139,40 @@ export default {
             msg:'',
             twolistnum:0,
             borderNum:0,
-            navBarFixed:false
+            navBarFixed:false,
+            sessionid:null,
+            xinxis:false
         }
     },
     methods:{
+        getCookie(name){
+            var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+            if(arr != null) {
+                this.sessionid = arr[2]
+            } else {
+                this.sessionid = null;
+            }
+        },
+        // delCookie(name){
+        //     this.sessionid = null;
+        //     var exp = new Date();
+        //     exp.setTime(exp.getTime() - 1);
+        //     var cval=getCookie(name);
+        //     if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+        // },
+        setCookie(name, value, day) {
+            if(day !== 0){
+                var expires = day * 24 * 60 * 60 * 1000;
+                var date = new Date(+new Date()+expires);
+                document.cookie = name + "=" + escape(value) + ";expires=" + date.toUTCString();
+            }else{
+                document.cookie = name + "=" + escape(value);
+            }
+        },
+        delCookie(name) {
+            this.sessionid = ''
+            this.setCookie(name, ' ', -1);
+        },
         writerChange(){
             console.log('haha1')
             this.show = !this.show;
@@ -126,8 +184,13 @@ export default {
             this.twolistnum=0;
         },
         changeTwoList(index){
-            console.log(index)
             this.twolistnum = index;
+        },
+        changexinxi(){
+            this.xinxis = true;
+        },
+        changexinxis(){
+            this.xinxis = false;
         },
         bookData(){
             if(this.msg===''){
@@ -151,8 +214,13 @@ export default {
             this.bookData();
         }
     },
+    computed: {
+        ...mapState({phone:state=>state.user.phone}),
+        
+    },
     mounted (){
         window.addEventListener('scroll', this.watchScroll)
+        this.getCookie("token");
     }
 }
 </script>
@@ -253,6 +321,7 @@ export default {
                 .header-login{
                     float: right;
                     margin-top:20px; 
+                    position:relative;
                     li{
                         height: 30px;
                         float: left;
@@ -263,8 +332,27 @@ export default {
                         line-height: 30px;
                         cursor:pointer;
                     }
+                    .user-name{
+                        height: 30px;
+                        float: left;
+                        margin:0 5px;
+                        line-height: 30px;
+                        i{
+                            font-style:none;
+                        }
+                    }
                     .user{
+                        float: left;
                         border: 0;
+                    }
+                    .xinxi{
+                        position: absolute;
+                        top: 40px;
+                        left: -100px;
+                        z-index: 9;
+                        background: rgba(255,255,255,.5);
+                        width:200px;
+                        height: 150px;
                     }
                 }
             }

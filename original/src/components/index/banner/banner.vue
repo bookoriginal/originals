@@ -2,8 +2,14 @@
     <div class="banner">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">
-                    <img :src="item.img" alt="">
+                <div class="swiper-slide">1
+                    <!-- <img src='../../../common/img/1.jpg' alt=""> -->3
+                </div>
+                <div class="swiper-slide">2
+                    <!-- <img src='../../../common/img/2.jpg' alt=""> -->
+                </div>
+                <div class="swiper-slide">3
+                    <!-- <img src='../../../common/img/3.jpg' alt=""> -->
                 </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -37,7 +43,11 @@ import Swiper from 'swiper'
 export default {
     data(){
         return{
-            imgList:[],
+            imgList:[
+                
+                // '../../../common/img/2.jpg',
+                // '../../../common/img/3.jpg',
+            ],
             hot:[
                 {
                     icon:'iconicon-1',
@@ -69,17 +79,11 @@ export default {
             })        
         },
         initData(){
-            this.$axios.get('/banner')
-            .then(data => {
-                console.log(data)
-                this.imgList = data
-            })
-            this.$nextTick(()=>{
-                this.initSwiper()
-            })
+           
         }
     },
     created(){
+        this.initSwiper();
         this.initData();
     }
 }
@@ -94,7 +98,7 @@ export default {
         height: 550px;
         box-shadow: 0 0 5px #000;
         .swiper-slide{
-            background: #f66;
+            // background: #f66;
             img{
                 width: 100%;
             }

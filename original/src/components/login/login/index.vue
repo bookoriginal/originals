@@ -24,7 +24,7 @@
                 
             </div>
             <div class="warning">
-                <router-link to='/index'>忘记密码？</router-link>
+                <router-link to='/login/changepass'>忘记密码？</router-link>
             </div>
             <div class="warning">
                 
@@ -45,7 +45,10 @@
     </div>
 </template>
 <script>
-import getCookie from '@/common/js/getCookie'
+import Vue from 'vue'
+import {Input,Button} from 'iview'
+Vue.component('Button',Button);
+Vue.component('Input',Input);
 export default {
     data(){
         return{
@@ -68,18 +71,49 @@ export default {
         }
     },
     methods:{
+        setCookie(name, value, day) {
+            if(day !== 0){
+                var expires = day * 24 * 60 * 60 * 1000;
+                var date = new Date(+new Date()+expires);
+                document.cookie = name + "=" + escape(value) + ";expires=" + date.toUTCString();
+            }else{
+                document.cookie = name + "=" + escape(value);
+            }
+        },
+        changephone(newPh){
+            console.log(newPh)
+        },
+        changepass(newPsw){
+            console.log(newPsw)
+        },
         login(){
-            this.$axios.post('/reg/ycusers/login/',{
-                username: this.phone,
-                password: this.password
-            }).then(data =>{
-                // console.log(getCookie("sessionid"))
-                console.log(data)
-                alert(data.msg);
-                this.$router.push('index')
-            })
+            if(this.phone && this.password){
+                this.$axios.post('/reg/ycusers/login/',{
+                    username: this.phone,
+                    password: this.password
+                }).then(data =>{
+                    let num = this.phone
+                    console.log(num)
+                    if(data.msg === '登录成功'){
+                        this.setCookie("token",new Date(),0)
+                        this.$router.replace({ name: 'index', params: { userId: num }})
+                    }
+                    alert(data.msg)
+                })
+            }else{
+                alert('用户名密码不能为空')
+            }
+            
         }
-    }
+    },
+    watch:{
+        phone:function(newPh){
+            return newPh
+        },
+        password:function(newPsw){
+            return newPsw
+        }
+    }  
 
 }
 </script>
