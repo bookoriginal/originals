@@ -9,7 +9,7 @@
                     <router-link v-for="(item,index) in guessArr" :key="index" to="/index" 
                     >
                         <div class="bookimg">
-                            <img :src="item.img" alt="">
+                            <img src="../../../common/img/photography.jpg" alt="">
                         </div>
                         <div class="bookname">
                             <h3>{{item.tit}}</h3>
@@ -91,6 +91,28 @@ export default {
                     float: left;
                     margin-right: 30px;
                     color: #333;
+                    padding: 10px;
+                    .bookimg{
+                        width: 196px;
+                        height: 200px;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .bookname{
+                        line-height: 25px;
+                        padding-left: 15px;
+                    }
+                    .bookwriter{
+                        line-height: 30px;
+                        padding-left: 15px;
+                    }
+                    .readbook{
+                        margin-top:15px;
+                        span{
+                            margin:0 10px;
+                        }
+                    }
                 }
                 a:nth-child(5){
                     margin-right: 0;
