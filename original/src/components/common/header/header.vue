@@ -102,7 +102,7 @@ export default {
                     tit:'我的创作'
                 }]},
                 {name:'我的书评',path:'/comment',icon:'',icon2:'',two:false},
-                {name:'个人中心',path:'/index',icon:'',icon2:'',two:false}
+                {name:'个人中心',path:'/mine',icon:'',icon2:'',two:false}
             ],
             writerArr:['天蚕土豆','haha','hehe','lala','erer'],
             show:false,

@@ -1,8 +1,7 @@
 <template>
 <div>
     <div class="wapper">
-        <Table :columns="columns7" :data="showList"></Table>
-
+        <Table :columns="columns7" :data="showList"  ref="demodata"  @on-row-click='goto'></Table>
         <Page class="page" :total="this.totalproblemList.length" :page-size= 'this.pagesize' @on-change="method"
          />
     </div>
@@ -12,30 +11,35 @@
 
 
 <script>
+import Vue from 'vue'
+import {Table,Page} from 'iview'
 import axios from 'axios'
+import 'iview/dist/styles/iview.css';
+Vue.use(Table,Page)
+
     export default {
         data () {
             return {
                 columns7: [
                     {
-                        title: '章节名',
-                        key: 'name',
+                        title: '书名',
+                        key: 'b_name',
                     },
                     {
-                        title: '字数',
-                        key: 'fontNum',
+                        title: '首字母',
+                        key: 'b_author',
                     },
                     {
-                        title: '级别',
-                        key: 'type',
+                        title: '作者寄语',
+                        key: 'b_synopsis',
                     },
                     {
-                        title: '保存类型',
-                        key: 'save'
+                        title: '简介字数',
+                        key: 'b_num'
                     },
                     {
                         title: '保存时间',
-                        key: 'time'
+                        key: 'update_time'
                     },
                   
                     {
@@ -43,7 +47,6 @@ import axios from 'axios'
                         key: 'action',
                         width: 150,
                         align: 'center',
-                      
                         render: (h, params) => {
                             return h('div', [
                               
@@ -56,9 +59,7 @@ import axios from 'axios'
                                         marginRight: '5px'
                                     },
                                     on: {
-                                        click: () => {
-                                            // this.show(params.index)
-                                            this.$router.push({path: '/creation/bianji',params:{}});
+                                        click: (index) => {   
                                         }
                                     }
                                 }, '编辑'),
@@ -79,53 +80,16 @@ import axios from 'axios'
                         }
                     }
                 ],
-
                 totalproblemList: [
-                    {
-                        name: '风一样的女子',
-                        fontNum:5000,
-                        type: '免费',
-                        save: '手动保存',
-                        time:'2019-4-5'
-                    },
-                     {
-                        name: '风一样的女子',
-                        fontNum:5000,
-                        type: '免费',
-                        save: '手动保存',
-                        time:'2019-4-5'
-                    },
-                   
-                    {
-                        name: '风一样的女子',
-                        fontNum:5000,
-                        type: '免费',
-                        save: '手动保存',
-                        time:'2019-4-5'
-                    },
-                     {
-                        name: '风一样的女子',
-                        fontNum:5000,
-                        type: '免费',
-                        save: '手动保存',
-                        time:'2019-4-5'
-                    },
-                     {
-                        name: '风一样的女子',
-                        fontNum:5000,
-                        type: '免费',
-                        save: '手动保存',
-                        time:'2019-4-5'
-                    },
-                      {
-                        name: '风一样的女子',
-                        fontNum:5000,
-                        type: '免费',
-                        save: '手动保存',
-                        time:'2019-4-5'
-                    },
-                   
-                   
+                    // {
+                    //     b_author: "3",
+                    //     b_content: "3",
+                    //     b_name: "3",
+                    //     b_num: 1,
+                    //     b_synopsis: "3",
+                    //     id: 3,
+                    //     reading_num: 0,
+                    // }
                 ],
                 showList:[],
                 datacount:5,
@@ -133,21 +97,34 @@ import axios from 'axios'
 
             }
         },
+        components:{Table,Page,},
         created() {
-        
-                this.$axios.get('/api/user/showown_book/')
-                .then(data=>{
-                    console.log(data.data)
-                    this.totalproblemList =  data.data
-                })
+           this.getdata()
          
         },
         mounted(){
-            this.showList = this.totalproblemList.slice(0,this.pagesize)
-          
+             
         },
         methods: {
-           
+            goto(index){
+                console.log(index);
+                
+                this.$router.push({name: 'bianji',params:{
+                    b_name:index.b_name,
+                    b_author:index.b_author,
+                    // b_synopsis:index.b_name,
+                    b_content:index.b_content,
+                    b_synopsis:index.b_synopsis
+                }});
+            },
+            getdata(){
+                this.$axios.get('/api/user/showown_book/')
+                .then(data=>{
+                    console.log(data.data);
+                    this.totalproblemList = data.data
+                    this.showList = this.totalproblemList.slice(0,this.pagesize)
+                })
+            },
             method(index){
                 console.log(index);
                 var _start = (index-1) * this.pagesize;
@@ -156,7 +133,6 @@ import axios from 'axios'
                 
             },
             show (index) {
-               
                 this.$Modal.info({
                     title: 'User Info',
                     content: `Name：${this.totalproblemList[index].name}<br>Age：${this.totalproblemList[index].fontNum}<br>Address：${this.totalproblemList[index].type}`

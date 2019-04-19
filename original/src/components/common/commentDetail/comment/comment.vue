@@ -42,12 +42,20 @@
 </template>
 
 <script>
+import { formatDate } from "../../../../common/js/time";
 export default {
   data() {
     return {
       reply: "",
       zan: false
     };
+  },
+  filters: {
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date, "yyyy年MM月dd日hh:mm");
+      //此处formatDate是一个函数，将其封装在common/js/date.js里面，便于全局使用
+    }
   },
   methods: {
     dianzan(index) {

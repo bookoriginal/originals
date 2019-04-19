@@ -38,14 +38,17 @@
                 </Col>
             </Row>
             <div class="right">
-                <router-view></router-view>
+                <!-- <router-view></router-view> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import headers  from '../index/header/header'
+    import Vue from 'vue'
+ 
+    // import {Row,Col,Menu,Submenu,template,Icon} from 'iview'
+    // Vue.use(Row,Col,Menu,Submenu,template,Icon)
     export default {
         data () {
             return {
@@ -53,7 +56,7 @@
             }
         },
         components: {
-            headers
+            // Row,Col,Menu,Submenu,template,Icon
         }
     }
 </script>

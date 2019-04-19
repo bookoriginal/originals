@@ -11,7 +11,7 @@
             </div>
             <div class="guess-list">
                 <!-- <ul class="guess"> -->
-                    <router-link v-for="(item,index) in guessArr" :key="index" to="/index" 
+                    <router-link v-for="(item,index) in guessArr" :key="index" to="/bookdetail" 
                         @mouseenter.native="boxShadow(i,index)"
                         @mouseleave.native="boxShadowNo()"
                         :class="i===num&&index===num2?'active':''"
