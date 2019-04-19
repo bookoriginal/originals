@@ -72,7 +72,7 @@ export default new Router({
           component: Bianjiing,
         },
         {
-          path:'creation',
+          path:'/creation',
           redirect:'/creation/creatbook' 
         }
       ]
