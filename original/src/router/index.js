@@ -16,11 +16,8 @@ import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
 import bookdetail from '@/components/bookdetail/detail'
 import bookshelf from '@/components/bookshelf/book'
-<<<<<<< HEAD
 import Changepass from '@/components/login/changepass'
-=======
 import Mine from '@/components/mine'
->>>>>>> dev
 
 Vue.use(Router)
 export default new Router({
