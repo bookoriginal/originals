@@ -184,10 +184,7 @@ export default {
             this.twolistnum=0;
         },
         changeTwoList(index){
-<<<<<<< HEAD
-=======
             // console.log(index)
->>>>>>> dev
             this.twolistnum = index;
         },
         changexinxi(){
