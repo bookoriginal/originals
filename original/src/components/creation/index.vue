@@ -1,16 +1,17 @@
 <template>
+<div>
+    <banner></banner>
     <div class="waapper">
-        <!-- <banner></banner> -->
+        
         <div class="contain">
             <router-link    
                 to="/index"
                 active-class='sel'
             >
-                作品集
+                首页
             </router-link>
 
              <router-link 
-                
                 to="/creation/upwork"
                 active-class='sel'
             >
@@ -25,18 +26,17 @@
         </div>
         <router-view></router-view>>
     </div>
+ </div>   
 </template>
 
 <script>
-
-import footer  from '../common/footer/footer'
-// import banner from '@/components/readClub/readclub/banner'
+import banner  from '@/components/sample/cre_banner'
 export default {
     data () {
         return {}    
     },
     components: {
-        footer
+        banner
     }
 }
 </script>

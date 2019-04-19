@@ -1,195 +1,215 @@
-<template>
-<div class="form-data">
-     <Divider orientation='left' style="font-size:24px">作品信息</Divider>
-    <div>
-        <span>书名:</span>
-        <Input v-model="bookname.bookname" placeholder="请输入要创建的书" style="width: 300px"
-        @on-blur='bname'
-         />
-         <div style="height:38px;">
-             <Alert type="error" show-icon v-if="this.bookname.state">请输入1-12个字符</Alert>
-         </div>
-    </div>
-
-     <div>
-        <span>类名:</span>
-        <Select v-model="model8"  style="width:200px">
-            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.value }}</Option>
-        </Select>
-        <div style="height:38px;">
-             <Alert type="error" show-icon v-if="this.typename.state"></Alert>
-         </div>
-    </div>
-    <!-- 作品首个字母 -->
-    <div>
-        <span>作品首个字母:</span>
-        <Input v-model="firstname.firstname" placeholder="作品首字母" style="width: 300px"
-        @on-blur='fname'
-         />
-         <div style="height:30px;">
-             <Alert type="error" show-icon v-if="this.firstname.state">1位字母a-zA-Z</Alert>
-         </div>
-    </div>
-
-    <!-- 内容介绍 -->
-    <div class="D_place">
-        <span>内容简介:</span>
-
-        <Input v-model="desc.desc1" type="textarea" :autosize="{minRows: 5,maxRows: 5}" placeholder="请在此输入作品简介"
-            @on-change='firstdesc'
-        ></Input>
-
-        <span class="num"><i>{{this.desc.num1}}</i>/400</span>
-        <div style="height:30px;">
-            <Alert type="error" show-icon v-if="this.desc.state">字数不能超过400</Alert>
-        </div>
-    </div>
-
-     <!-- 作者寄语-->
-    <div class="D_place">
-        <span>作者寄语:</span>
-
-        <Input style="" v-model="s_desc.desc1" type="textarea" :autosize="{minRows: 3,maxRows: 3}" placeholder="请在此输入作品寄语"
-            @on-change='seconddesc'
-        ></Input>
-
-        <span class="num"><i>{{this.s_desc.num1}}</i>/20</span>
-        <div style="height:30px;">
-            <Alert type="error" show-icon v-if="this.s_desc.state">字数不能超过20</Alert>
-        </div>
-    </div>
-    <Button type="primary" @click="handleSubmit">上传内容</Button>
-    <Button @click="handleReset('formCustom')" style="margin-left: 8px">添加到作品集</Button>
-    <Alert type="success" v-show="this.success.state" show-icon>上传成功</Alert>
-</div>
+<template>  
+<div class="wrapper">
+    <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="100">
+    <!-- <Form :label-width="100" ref='formCustom' :model='formCustom' :rules="formCustom"> -->
+        <FormItem label="书名" prop="bookname">
+            <Input type="text" v-model="formCustom.bookname" style="width:200px"></Input>
+        </FormItem>
+         <FormItem label="类名" prop="bookname">
+            <Select v-model="model8" clearable style="width:200px">
+                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+        </FormItem>
+        <FormItem label="作品首个字母" prop="letter">
+            <Input type="text" v-model="formCustom.letter"></Input>
+        </FormItem>
+         <FormItem label="上传封面" prop="">
+           <!-- <Upload
+                multiple
+                type="drag" style="width:200px"
+                action="http://localhost:8080" >
+                <div style="padding: 20px 0">
+                    <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                    <img src="" alt="" srcset="">
+                    <p>封面</p>
+                </div>
+            </Upload> -->
+            <div>
+                <p>只能上传规格240*320像素的小于100K的JPG图片</p>
+            </div>
+           
+        </FormItem> 
+          <FormItem label="添加标签" prop="" >
+            <Tag checkable color="primary" fade>标签一</Tag>
+            <Tag checkable color="success" fade>标签二</Tag>
+            <Tag checkable color="error" fade>标签三</Tag>
+            <Tag checkable color="warning" fade>标签四</Tag>
+        </FormItem>
+        <FormItem label="内容介绍" prop="desc1" >
+            <Input v-model="formCustom.desc1" type="textarea" :autosize="{minRows: 5,maxRows: 5}" placeholder="Enter something..."></Input>
+            <span><i>{{this.fontNum1}}</i>/400</span>
+        </FormItem>
+        <FormItem label="作者寄语" prop="desc2" ref="desc2">
+            <Input class="desc2" v-model="formCustom.desc2" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="">
+            </Input>
+            <span><i>{{this.fontNum2}}</i>/20</span>
+        </FormItem> 
+        <FormItem>
+            <Button type="primary" @click="handleSubmit('formCustom')">添加</Button>
+            <Button @click="handleReset('formCustom')" style="margin-left: 8px">Reset</Button>
+        </FormItem>
+    </Form>
+</div>    
 </template>
 <script>
+    import Vue from 'vue'
+    import {Form,FormItem,Button,Input,Select,Option,Upload,Tag,Icon} from 'iview'
+    import 'iview/dist/styles/iview.css';
+    Vue.use(Form,FormItem,Button,Input,Select,Option,Upload,Tag,Icon)
     export default {
         data () {
+            const validatePass = (rule, value, callback) => {
+               let reg = /^[\u4E00-\u9FA5]{1,12}$/
+            //    console.log(reg.test(value))
+               if (!reg.test(value)) {
+                 
+                   callback(new Error('请输入1-12位正确字符'));
+                } else {
+                    //   console.log(456);
+                    callback();
+                }
+            };
+            const validateLetter = (rule, value, callback) => {
+               let reg = /^[a-zA-Z]{1}$/
+               if (!reg.test(value)) {
+                   callback(new Error('请书名首字母'));
+                } else {
+                    console.log(this.formCustom.bookname);
+                    
+                    // if(this.bookname === ''){
+                    //     callback(new Error('请输入书名'));
+                    // }
+                    callback();
+                }
+            };
+            //内容介绍
+            const validateDesc1 = (rule, value, callback) => {
+               
+               this.fontNum1 = this.formCustom.desc1.length; 
+               if (this.formCustom.desc1.length>400) {
+                   callback(new Error('输入字数超过400'));
+                } else {
+                    // console.log(this.formCustom.bookname);
+                    callback();
+                }
+            };
+            //作者寄语
+            const validateDesc2 = (rule, value, callback) => {
+               
+               this.fontNum2 = this.formCustom.desc2.length; 
+               if (this.formCustom.desc2.length>20) {
+                   callback(new Error('输入字数超过20'));
+                } else {
+                    // console.log(this.formCustom.bookname);
+                    callback();
+                }
+            };
             return {
-              success:{
-                  state:false
-              },
-                bookname:{
-                    state:false,
-                    bookname: ''
+                formCustom: {
+                    bookname: '',
+                    letter:'',//首个字母
+                    desc1:'',
+                    desc2:'',
                 },
-                typename:{
-                    state:false,
-                    typename: ''
+                ruleCustom: {
+                    bookname: [
+                        { validator: validatePass, trigger: 'blur' }
+                    ],
+                    letter: [
+                        { validator: validateLetter, trigger: 'blur' }
+                    ],
+                    desc1:[//内容介绍
+                        { validator: validateDesc1, trigger: 'blur change' }
+                    ],
+                     desc2:[//内容介绍
+                        { validator: validateDesc2, trigger: 'blur change' }
+                    ],
                 },
-                firstname:{
-                    state:false,
-                    firstname: ''
-                },
-                desc:{
-                    state:false,
-                    desc1: '',
-                    num1:0,
-                },
-                s_desc:{
-                    state:false,
-                    desc1: '',
-                    num1:0,
-                },
-                model8: '',
                 cityList: [
                     {
-                        value: 'New York',
-                        label: 'New York'
+                        value: '文学史',
+                        label: '文学史'
                     },
                     {
-                        value: 'London',
-                        label: 'London'
+                        value: '科幻小说',
+                        label: '科幻小说'
                     },
                     {
-                        value: 'Sydney',
-                        label: 'Sydney'
+                        value: '言情小说',
+                        label: '言情小说'
                     },
                     {
-                        value: 'Ottawa',
-                        label: 'Ottawa'
+                        value: '武侠小说',
+                        label: '武侠小说'
                     },
                     {
-                        value: 'Paris',
-                        label: 'Paris'
+                        value: '艺术理论',
+                        label: '艺术理论'
                     },
                     {
-                        value: 'Canberra',
-                        label: 'Canberra'
+                        value: '人物传记',
+                        label: '人物传记'
                     }
                 ],
-              
+                model8: '',
+                fontNum1:0,
+                fontNum2:0,
             }
         },
-
+        components:{
+            Form,FormItem,Button,Input,Select,Option,Upload,Tag,Icon
+        },
         methods: {
-            bname(){//书名
-                let reg = /^[0-9a-zA-Z\u4E00-\u9FA5]{1,12}$/
-               if (reg.test(this.bookname.bookname)) {
-                  this.bookname.state = false;
-                  
-                } else {
-                   this.bookname.state = true;
-                }
+           handleSubmit (name) {
+               console.log( this.$refs[name]);
+              
+                this.$refs[name].validate((valid) => {
+                    
+                    if (valid) {
+                        // this.$axios.get('/api/user/add_book/?b_name=123&b_author=456&b_content=789&b_synopsis=012')
+                        // this.$axios.get(`/api/user/add_book/?b_name=${this.formCustom.bookname}&b_author=${this.formCustom.letter}&b_content=${this.formCustom.desc1}&b_synopsis=${this.formCustom.desc2}`)
+                        let params ={
+                            b_name:this.formCustom.bookname,     
+                            b_author:this.formCustom.letter,    
+                            b_content:this.formCustom.desc1, 
+                            b_synopsis:this.formCustom.desc2 ,
+                        }
+                        let param = this.$qs.stringify(params)
+                        this.$axios.post('/api/user/add_book/',param)
+                        .then(data=>{
+                            console.log(data);
+                            
+                        })
+                        this.$Message.success('Success!');
+                    } else {
+                        this.$Message.error('Fail!');
+                    }
+                })
             },
-            fname(){//书名
-               let reg = /^[a-zA-Z]{1}$/
-               if (reg.test(this.firstname.firstname)) {
-                  this.firstname.state = false;
-                } else {
-                    this.firstname.state = true;
-                }
+            handleReset (name) {
+                this.$refs[name].resetFields();
             },
-            firstdesc(){
-                 this.desc.num1 = this.desc.desc1.length; 
-               if (this.desc.num1>400) {
-                    this.desc.state = true;
-                } else {
-                    this.desc.num1 = this.desc.desc1.length;
-                    this.desc.state = false;
-                }
-            },
-            seconddesc(){
-                 this.s_desc.num1 = this.s_desc.desc1.length; 
-               if (this.s_desc.num1>20) {
-                    this.s_desc.state = true;
-                } else {
-                    this.s_desc.num1 = this.s_desc.desc1.length;
-                    this.s_desc.state = false;
-                }
-            },
-            handleSubmit(){
-                if(this.bookname.state === false & this.firstname.state === false & this.desc.state === false & this.s_desc.state === false & this.bookname.bookname !== ''){
-                    console.log('成功');
-                    this.success.state = true;
-                }
-            }
-        },
+           
+        }
     }
 </script>
 <style lang="less" scoped>
-.form-data{
+.wrapper{
     width: 1200px;
     margin: 0 auto;
-    div{
-        span{
-            width: 120px;
-            height: 26px;
-            line-height: 26px;
-            font-size: 18px;
-            display: inline-block;
-            text-align: right;
-            margin-right: 16px;
-        }
-    }
-    .D_place{
+    .desc2{
         position: relative;
-        .num{
-            position: absolute;
-            right: 12px;
-            bottom: 30px;
-        }
     }
+    span{
+            position: absolute;
+            bottom: 10px;
+            right: 6px;
+            height: 16px;
+    }
+    .desc2 /deep/.ivu-input{
+            // background: blue;
+            // height: 115px;
+        }
 }
 </style>
+

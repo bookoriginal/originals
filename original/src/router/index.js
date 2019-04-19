@@ -16,7 +16,11 @@ import Bianji from '@/components/sample/bianji'
 import Bianjiing from '@/components/sample/bianjiing'
 import bookdetail from '@/components/bookdetail/detail'
 import bookshelf from '@/components/bookshelf/book'
+<<<<<<< HEAD
 import Changepass from '@/components/login/changepass'
+=======
+import Mine from '@/components/mine'
+>>>>>>> dev
 
 Vue.use(Router)
 export default new Router({
@@ -34,6 +38,11 @@ export default new Router({
       path:'/bookdetail',
       name: 'bookdetail',
       component: bookdetail,
+    },
+    {
+      path:'/mine',
+      name: 'mine',
+      component: Mine,
     },
     {
       path: '/creation',
@@ -67,7 +76,7 @@ export default new Router({
           component: Bianjiing,
         },
         {
-          path:'creation',
+          path:'/creation',
           redirect:'/creation/creatbook' 
         }
       ]
@@ -79,7 +88,7 @@ export default new Router({
       component: News,
       children: [
         {
-          path: 'newsdetail',
+          path: 'newsdetail/:id',
           component: newsdetail
         }
       ]
@@ -91,7 +100,7 @@ export default new Router({
       component: Comment,
       children: [
         {
-          path: 'commentDetail',
+          path: 'commentDetail/:id',
           component: commentdetail
         }
       ]
